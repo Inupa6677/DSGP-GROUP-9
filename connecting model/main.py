@@ -9,7 +9,7 @@ with open('countpredictionDTFinal.pkl', 'rb') as file:
 
 # Mapping for dropdown options to numeric values
 dropdown_mapping = {
-    'Kensington and Chelsea': 182,
+    'Kensington and Chelsea': 169,
     'Hammersmith and Fulham': 155,
     'Westminster': 398,
     'City of London': 79,
@@ -83,6 +83,14 @@ Weather_condition_mapping = {
     'Snowing + high winds': 5,
 }
 
+Light_condition_mapping = {
+    'Daylight': 4,
+    'Darkness - lights lit': 1,
+    'Darkness - lighting unknown': 0,
+    'Darkness - lights unlit': 2,
+    'Darkness - no lighting': 3,
+}
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -95,7 +103,7 @@ def home():
             day_of_the_week_mapping[request.form['Day of the week']],
             dropdown_mapping[request.form['District']],  # Map dropdown value to numeric
             Weather_condition_mapping[request.form['Weather conditions']],
-            int(request.form['light conditions']),
+            Light_condition_mapping[request.form['Light conditions']],
         ]
 
         # Make predictions

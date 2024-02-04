@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Prediction</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='aaa.css') }}">
-
-</head>
 <body>
     <h1>Model Prediction</h1>
 
     <form method="post" action="/">
-        <label for="month">Month:</label>
+        <label for="month">month:</label>
         <select name="month" required>
             <option value="January">January</option>
             <option value="February">February</option>
@@ -25,12 +16,11 @@
             <option value="October">October</option>
             <option value="November">November</option>
             <option value="December">December</option>
-            <!-- Add other options for months as needed -->
+
         </select><br>
 
         <label for="Hour of the day">Hour of the day:</label>
         <select name="Hour of the day" required>
-            ect name="Hour of the day" required>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -55,6 +45,7 @@
             <option value="22">22</option>
             <option value="23">23</option>
             <option value="24">24</option>
+            <!-- Add more options as needed -->
         </select><br>
 
         <label for="Day of the week">Day of the week:</label>
@@ -66,11 +57,12 @@
             <option value="Friday">Friday</option>
             <option value="Saturday">Saturday</option>
             <option value="Sunday">Sunday</option>
-            <!-- Add other options for days as needed -->
         </select><br>
 
         <label for="District">District:</label>
         <select name="District" required>
+            <option value="Kensington and Chelsea">Kensington and Chelsea</option>
+            <option value="Hammersmith and Fulham">Hammersmith and Fulham</option>
             <option value="Westminster">Westminster</option>
             <option value="City of London">City of London</option>
             <option value="Tower Hamlets">Tower Hamlets</option>
@@ -78,6 +70,7 @@
             <option value="Hackney">Hackney</option>
             <option value="Islington">Islington</option>
             <option value="Camden">Camden</option>
+            <!-- Add more options as needed -->
         </select><br>
 
         <label for="Weather conditions">Weather conditions:</label>
@@ -89,7 +82,7 @@
             <option value="Raining + high winds">Raining + high winds</option>
             <option value="Fog or mist">Fog or mist</option>
             <option value="Snowing + high winds">Snowing + high winds</option>
-            <!-- Add other options for weather conditions as needed -->
+
         </select><br>
 
         <label for="Light conditions">Light conditions:</label>
@@ -99,14 +92,8 @@
             <option value="Darkness - lighting unknown">Darkness - lighting unknown</option>
             <option value="Darkness - lights unlit">Darkness - lights unlit</option>
             <option value="Darkness - no lighting">Darkness - no lighting</option>
+
         </select><br>
 
         <input type="submit" value="Predict">
     </form>
-
-    <!-- Display predictions if available -->
-    {% if predictions is not none %}
-        <p>Predictions: {{ predictions }}</p>
-    {% endif %}
-</body>
-</html>
