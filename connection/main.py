@@ -227,3 +227,63 @@ road_condition_mapping_severity = {
     'Snow': 4,
     'Flood over 3cm. deep': 5,
 }
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        # Get values from the form
+        input_values = [
+            month_mapping[request.form['month']],
+            Hour_mapping[request.form['Hour of the day']],
+            day_of_the_week_mapping[request.form['Day of the week']],
+            dropdown_mapping[request.form['District']],  # Map dropdown value to numeric
+            Weather_condition_mapping[request.form['Weather conditions']],
+            Light_condition_mapping[request.form['Light conditions']],
+        ]
+
+        # Make predictions
+        predictions = best_model.predict([input_values])
+        prediction_2 = road_type_prediction()
+
+        return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]])
+
+    return render_template('aaa.html', predictions=None)
+
+def road_type_prediction():
+    if request.method == 'POST':
+        road_type = 3
+        accident_severity = 3
+        input_data = [Weather_condition_mapping[request.form['Weather conditions']],
+                      Light_condition_mapping[request.form['Light conditions']],
+                      road_type, accident_severity
+                      ]
+
+        # Make prediction using the new model
+        prediction = loaded_model.predict([input_data])
+        print(prediction)
+
+        return prediction
+
+
+@app.route('/new_page', methods=['GET', 'POST'])
+def new_page():
+    if request.method == 'POST':
+        # Get values from the form
+        input_values_severity = [
+            Number_of_vehicle_mapping[request.form['Number_of_Vehicles']],
+            Number_of_Casualties_mapping[request.form['Number_of_Casualties']],
+            Weather_condition_for_severity_mapping[request.form['Weather_Conditions']],
+            road_condition_mapping_severity[request.form['Road_Surface_Conditions']],
+            Light_condition_for_severity_mapping[request.form['Light conditions']],
+        ]
+
+        # Make predictions
+        predictions_severity = severity_model.predict([input_values_severity])
+
+        return render_template('bbb.html', predictions=[predictions_severity])
+
+    return render_template('bbb.html', predictions=None)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

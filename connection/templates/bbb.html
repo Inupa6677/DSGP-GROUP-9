@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Page</title>
+</head>
+<body>
+    <h1>Welcome to the New Page!</h1>
+    <form id="prediction-form" method="post" action="/predict">
+        <label for="Number_of_Vehicles"> Number of vehicles:</label>
+        <select id="numberOfVehicles" name="Number_of_Vehicles" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select><br>
+
+        <label for="Number_of_Casualties">Number of Casualties:</label>
+        <select id="NumberOfCasualties" name="Number_of_Casualties" required>
+            <option value="1"> 1 </option>
+            <option value="2"> 2 </option>
+
+        </select><br>
+
+        <label for="Weather_Conditions">Weather Conditions:</label>
+        <select id="WeatherConditions" name="Weather_Conditions" required>
+            <option value="Raining no high winds">Raining no high winds</option>
+            <option value="Fine no high winds">Fine no high winds</option>
+            <option value="Snowing no high winds">Snowing no high winds</option>
+            <option value="Fine + high winds">Fine + high winds</option>
+            <option value="Raining + high winds">Raining + high winds</option>
+            <option value="Fog or mist">Fog or mist</option>
+            <option value="Snowing + high winds">Snowing + high winds</option>
+        </select><br>
+
+        <label for="Road_Surface_Conditions">Road Surface Conditions:</label>
+        <select id="RoadSurfaceConditions" name="Road_Surface_Conditions" required>
+            <option value="Dry">Dry</option>
+            <option value=" Wet or damp"> Wet or damp</option>
+            <option value="Frost or ice">Frost or ice</option>
+            <option value="Snow">Snow</option>
+            <option value="Flood over 3cm. deep">Flood over 3cm. deep</option>
+        </select><br>
+
+        <label for="Light conditions">Light conditions:</label>
+        <select name="Light conditions" id="light_conditions_id" required>
+            <option value="Daylight">Daylight</option>
+            <option value="Darkness - lights lit">Darkness - lights lit</option>
+            <option value="Darkness - lighting unknown">Darkness - lighting unknown</option>
+            <option value="Darkness - lights unlit">Darkness - lights unlit</option>
+            <option value="Darkness - no lighting">Darkness - no lighting</option>
+        </select><br>
+        <button type="submit">Predict</button>
+    </form>
+
+    <div id="prediction-result"></div>
+
+    <script src="{{ url_for('static', filename='jsFiles/bbb.js') }}"></script>
+
+</body>
+</html>
