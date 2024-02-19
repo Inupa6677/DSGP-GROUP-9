@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import pickle
-
+import sklearn
 app = Flask(__name__)
 
 # Load  prediction models
