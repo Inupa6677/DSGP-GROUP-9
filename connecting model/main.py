@@ -244,6 +244,7 @@ def home():
 
         # Make predictions
         predictions = best_model.predict([input_values])
+        print(predictions)
         prediction_2 = road_type_prediction()
 
         return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]])
@@ -288,4 +289,5 @@ def new_page():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
+
