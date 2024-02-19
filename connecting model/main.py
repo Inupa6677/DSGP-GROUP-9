@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import pickle
-import sklearn
+
 app = Flask(__name__)
 
 # Load  prediction models
@@ -228,6 +228,7 @@ road_condition_mapping_severity = {
     'Flood over 3cm. deep': 5,
 }
 
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
@@ -248,6 +249,7 @@ def home():
         return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]])
 
     return render_template('aaa.html', predictions=None)
+
 
 def road_type_prediction():
     if request.method == 'POST':
