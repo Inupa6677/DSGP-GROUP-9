@@ -24,13 +24,11 @@
 
         <label for="Weather_Conditions">Weather Conditions:</label>
         <select id="WeatherConditions" name="Weather_Conditions" required>
-            <option value="Raining no high winds">Raining no high winds</option>
             <option value="Fine no high winds">Fine no high winds</option>
+            <option value="Raining no high winds">Raining no high winds</option>
             <option value="Snowing no high winds">Snowing no high winds</option>
-            <option value="Fine + high winds">Fine + high winds</option>
-            <option value="Raining + high winds">Raining + high winds</option>
-            <option value="Fog or mist">Fog or mist</option>
-            <option value="Snowing + high winds">Snowing + high winds</option>
+            <option value="Other">Other</option>
+
         </select><br>
 
         <label for="Road_Surface_Conditions">Road Surface Conditions:</label>
@@ -38,17 +36,15 @@
             <option value="Dry">Dry</option>
             <option value=" Wet or damp"> Wet or damp</option>
             <option value="Frost or ice">Frost or ice</option>
-            <option value="Snow">Snow</option>
-            <option value="Flood over 3cm. deep">Flood over 3cm. deep</option>
+
         </select><br>
 
         <label for="Light conditions">Light conditions:</label>
         <select name="Light conditions" id="light_conditions_id" required>
             <option value="Daylight">Daylight</option>
+            <option value="Darkness - no lighting">Darkness - no lighting</option>
             <option value="Darkness - lights lit">Darkness - lights lit</option>
             <option value="Darkness - lighting unknown">Darkness - lighting unknown</option>
-            <option value="Darkness - lights unlit">Darkness - lights unlit</option>
-            <option value="Darkness - no lighting">Darkness - no lighting</option>
         </select><br>
         <button type="submit">Predict</button>
     </form>

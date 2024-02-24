@@ -203,29 +203,30 @@ Number_of_Casualties_mapping = {
 }
 
 Weather_condition_for_severity_mapping = {
-    'Raining no high winds': 4,
+    'Raining no high winds': 2,
     'Fine no high winds': 1,
-    'Snowing no high winds': 6,
-    'Fine + high winds': 0,
-    'Raining + high winds': 3,
-    'Fog or mist': 2,
-    'Snowing + high winds': 5,
+    'Snowing no high winds': 3,
+    'Other': 8,
 }
 
 Light_condition_for_severity_mapping = {
-    'Daylight': 4,
-    'Darkness - lights lit': 1,
+    'Daylight': 1,
+    'Darkness - lights lit': 4,
     'Darkness - lighting unknown': 7,
-    'Darkness - lights unlit': 5,
     'Darkness - no lighting': 6,
 }
 
 road_condition_mapping_severity = {
-    'Wet or damp': 1,
-    'Dry': 2,
+    'Wet or damp': 2,
+    'Dry': 1,
     'Frost or ice': 3,
-    'Snow': 4,
-    'Flood over 3cm. deep': 5,
+}
+
+
+severity_mapping_inverse = {
+    3: 'Slight',
+    2: 'Serious',
+    1: 'Fatal',
 }
 
 @app.route('/')
