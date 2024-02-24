@@ -287,7 +287,7 @@ def new_page():
         # Make predictions
         predictions_severity = severity_model.predict([input_values_severity])
 
-        return render_template('bbb.html', predictions=[predictions_severity])
+        return render_template('bbb.html', predictions=predictions_severity)
 
     return render_template('bbb.html', predictions=None)
 
