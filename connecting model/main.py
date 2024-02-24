@@ -233,7 +233,7 @@ def index():
     return render_template('homepage.html')
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/prediction_page', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
         # Get values from the form
