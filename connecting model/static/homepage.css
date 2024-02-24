@@ -4,12 +4,11 @@
     padding: 0;
 }
 
-body{
-    background-image:url("../IMAGE/bg.png");
+body {
+    background-image: url("/static/IMAGE/bg.png");
     background-size: 100%;
     background-repeat: no-repeat;
 }
-
 .navbar{
     position: fixed;
     top: 0;

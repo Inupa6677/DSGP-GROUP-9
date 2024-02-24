@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomePage</title>
-    <link rel="stylesheet" href="CSS/homepage.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css') }}">
 </head>
 
 <body>
 
     <div class="bg">
         <div class="navbar">
-            <img src="IMAGE/logoaccitracker.png" class="logo">
+            <img src="{{ url_for('static', filename='IMAGE/logoaccitracker.png') }}" class="logo">
         </div>
     </div>
     <div class="content">
@@ -27,10 +27,10 @@
         <br>
         <br>
         <div>
-            <a href="prediction.html"> <button type="button"><span></span>Prediction</button> </a>
-            <a href="severity.html"> <button type="button"><span></span>Severity</button> </a>
+            <button onclick="goToPage('aaa.html')">Prediction</button>
+            <button onclick="goToPage('bbb.html')">Severity</button>
         </div>
     </div>
-
+    <script src="{{ url_for('static', filename='jsFiles/homepage.js') }}"></script>
 </body>
 </html>

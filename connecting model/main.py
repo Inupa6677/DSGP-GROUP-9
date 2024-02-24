@@ -228,6 +228,10 @@ road_condition_mapping_severity = {
     'Flood over 3cm. deep': 5,
 }
 
+@app.route('/')
+def index():
+    return render_template('homepage.html')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
