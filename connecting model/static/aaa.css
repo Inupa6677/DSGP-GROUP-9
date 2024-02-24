@@ -131,6 +131,33 @@ form {
     text-align: center;
 }
 
+/* Navigation Bar Styles */
+.navbar {
+    background-color: #FFF; /* Change as needed */
+    height: 60px; /* Adjust as needed */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    position: fixed; /* Keep it on top */
+    top: 0;
+}
+
+.logo {
+    height: 50px; /* Adjust as needed */
+}
+
+/* Container Styles */
+.container {
+    margin-top: 60px; /* Should be equal to or greater than the height of the navbar */
+}
+
+/* Additional styles for your existing content */
+/* ... */
+
 
 
 
