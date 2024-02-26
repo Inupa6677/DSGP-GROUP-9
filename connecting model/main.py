@@ -248,7 +248,7 @@ def home():
         ]
 
         # Make predictions
-        predictions = round(best_model.predict([input_values]))
+        predictions = best_model.predict([input_values])
         print(predictions)
         prediction_2 = road_type_prediction()
 
