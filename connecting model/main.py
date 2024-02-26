@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 import pickle
-
+import math
 app = Flask(__name__)
 
 # Load  prediction models
-with open('countpredictionDTEvaluated.pkl', 'rb') as file:
+with open('countpredictionDTlastFinal.pkl', 'rb') as file:
     best_model = pickle.load(file)
 
 with open('road_surface_model.pkl', 'rb') as file:
@@ -248,7 +248,7 @@ def home():
         ]
 
         # Make predictions
-        predictions = best_model.predict([input_values])
+        predictions = round(best_model.predict([input_values]))
         print(predictions)
         prediction_2 = road_type_prediction()
 
