@@ -5,7 +5,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
-function focusMapOnDistrict(district) {
+
+function focusMapOnDistrict() {
+const district = document.getElementById("district-dropdown").value;
     // dictionary to map district with coordinates
     var districtCoordinates = {
                 "Kensington and Chelsea": [51.50379515, -0.20078938323179596],
@@ -430,19 +432,34 @@ function focusMapOnDistrict(district) {
     if (districtCoordinates.hasOwnProperty(district)) {
         // Get the coordinates of the district
         var coordinates = districtCoordinates[district];
+        alert(coordinates);
+        var data = {
+    Latitude: coordinates[0],
+    longitude: coordinates[1],
+
+};
+
+// Convert the object or array to a JSON string
+var jsonString = JSON.stringify(data);
+
+// Store the JSON string in local storage
+localStorage.setItem('myData',jsonString);
+alert(data);
+
+        var map = L.map('map').setView(coordinates, 10); // Default to London
+        alert(map);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
         // Set the view of the map to the coordinates of the district and zoom in
-        map.setView(coordinates, 14); // Adjust the zoom level as needed
+        //map.setView(coordinates, 14); // Adjust the zoom level as needed
     } else {
         // District not found in the dictionary
         alert('District coordinates not available.');
     }
 }
 
-// Event listener for the district dropdown
-document.getElementById('district-dropdown').addEventListener('change', function() {
-    // Calling the focusMapOnDistrict function with the selected district as input
-    focusMapOnDistrict(this.value);
-});
 
 
 const newPageButton = document.getElementById('new-page-button');

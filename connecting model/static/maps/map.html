@@ -36,6 +36,7 @@
             </style>
         
     <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+
 </head>
 <body>
     
@@ -49,13 +50,19 @@
             var map_6e83edfb4ac1d51db68b2448762ecd8e = L.map(
                 "map_6e83edfb4ac1d51db68b2448762ecd8e",
                 {
-                    center: [52.5515884326, -1.4591268169],
+                    center: [55.45184960, -4.26444780],
                     crs: L.CRS.EPSG3857,
                     zoom: 10,
                     zoomControl: true,
                     preferCanvas: false,
                 }
             );
+            var myData = localStorage.getItem('myData');
+
+
+
+
+
 
             
 
@@ -403,4 +410,7 @@
             ).addTo(map_6e83edfb4ac1d51db68b2448762ecd8e);
         
 </script>
+
+<script src="../static/jsFiles/map.js"></script>
+
 </html>

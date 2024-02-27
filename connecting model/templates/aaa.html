@@ -78,7 +78,7 @@
                     </select><br>
 
                     <label for="District">District:</label>
-                    <select name="District" id="district-dropdown" required>
+                    <select name="District" id="district-dropdown" required onchange="focusMapOnDistrict()">
                         <option value="Kensington and Chelsea">Kensington and Chelsea</option>
                         <option value="Hammersmith and Fulham">Hammersmith and Fulham</option>
                         <option value="Westminster">Westminster</option>
@@ -552,10 +552,8 @@
     <!--  Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-
-
     <!-- link JavaScript file -->
-    <script src="{{ url_for('static', filename='jsFiles/aaa.js') }}"></script>
+    <script src="../static/jsFiles/aaa.js"></script>
 
 </body>
 </html>
