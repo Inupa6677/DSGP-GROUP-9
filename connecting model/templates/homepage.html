@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
-    <link rel="stylesheet" href="css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css') }}">
 </head>
 <body>
 
     <section class="header">
 
         <nav>
-           <a href="index.html"><img src="image/logo.png" alt="Logo"></a>
+           <img src="{{ url_for('static', filename='image/logo.png') }}" class="logo">
            <div class="nav-links">
             <ul>
                 <li><a href="homepage.html">HOME</a></li>
-                <li><a href="#">PREDICTION</a></li>
-                <li><a href="#">SEVERITY</a></li>
+                <li><a href="/prediction_page">PREDICTION</a></li>
+                <li><a href="/new_page">SEVERITY</a></li>
                 <li><a href="#">ANALYSIS</a></li>
                 <li><a href="#">ABOUT</a></li>
                 <li><a href="#">CONTACT US</a></li>
@@ -51,12 +51,13 @@
         </div>
 
         <div class="btn">
-            <a href="#"> <button type="button"><span></span>Prediction</button> </a>
-            <a href="#"> <button type="button"><span></span>Severity</button> </a>
+            <a href="/prediction_page"> <button type="button"><span></span>Prediction</button> </a>
+            <a href="/new_page"> <button type="button"><span></span>Severity</button> </a>
             <a href="#"> <button type="button"><span></span>Analysis</button> </a>
         </div>
     
     </section>
+    <script src="{{ url_for('static', filename='jsFiles/hompage.js') }}"></script>
 
 </body>
 </html>

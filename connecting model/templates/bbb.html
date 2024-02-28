@@ -7,8 +7,20 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bbb.css') }}">
 </head>
 <body>
-    <div class="navbar">
-        <img src="{{ url_for('static', filename='IMAGE/logoaccitracker.png') }}" class="logo">
+    <div class="bg">
+        <nav>
+           <img src="{{ url_for('static', filename='image/logo.png') }}" class="logo">
+           <div class="nav-links">
+            <ul>
+                <li><a href="homepage.html">HOME</a></li>
+                <li><a href="/prediction_page">PREDICTION</a></li>
+                <li><a href="/new_page">SEVERITY</a></li>
+                <li><a href="#">ANALYSIS</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT US</a></li>
+            </ul>
+           </div>
+        </nav>
     </div>
     <h1> Accident severity prediction </h1>
     <form id="prediction-form" method="post" action="/new_page">

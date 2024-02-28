@@ -158,6 +158,54 @@ form {
 /* Additional styles for your existing content */
 /* ... */
 
-
+.header{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../image/bg.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+nav{
+    display: flex;
+    padding: 5px 35px;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: 100px;
+    background-color: #EFECEC;
+}
+nav img{
+    width: 300px;
+    padding: 15px;
+}
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+.nav-links ul li{
+    list-style:  none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.nav-links ul li a{
+    color: #0C2D57;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+.nav-links ul li::after{
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #0C2D57;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+    width: auto;
+}
 
 
