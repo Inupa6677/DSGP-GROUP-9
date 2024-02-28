@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 import pickle
-import math
+from pymongo import MongoClient
+
+
 app = Flask(__name__)
 
 # Load  prediction models
@@ -232,8 +234,6 @@ severity_mapping_inverse = {
 @app.route('/')
 def index():
     return render_template('homepage.html')
-
-
 
 
 @app.route('/prediction_page', methods=['GET', 'POST'])
