@@ -1,107 +1,117 @@
-* {
-    box-sizing: border-box;
+*{
     margin: 0;
     padding: 0;
 }
-
-body {
-    background-image: url("/static/IMAGE/bg.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #fff;
-    padding-top: 120px; /* Adjusted for fixed navbar height */
-}
-
-.navbar {
-    background-color: #FFF; /* Change as needed */
-    height: 60px; /* Adjust as needed */
+.header{
+    min-height: 100vh;
     width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../image/bg.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+nav{
     display: flex;
-    align-items: center;
+    padding: 5px 35px;
     justify-content: space-between;
-    padding: 0 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    position: fixed; /* Keep it on top */
-    top: 0;
+    align-items: center;
+    width: auto;
+    height: 100px;
+    background-color: #EFECEC;
 }
-
-.logo {
-    height: 50px; /* Adjust as needed */
+nav img{
+    width: 300px;
+    padding: 15px;
 }
-
-
-.content {
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+.nav-links ul li{
+    list-style:  none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.nav-links ul li a{
+    color: #0C2D57;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+.nav-links ul li::after{
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #0C2D57;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+    width: auto;
+}
+.offers{
+    width: 80%;
+    margin: auto;
     text-align: center;
+    padding-top: 100px;
 }
-
-.content h1 {
-    font-size: 6vw; /* Responsive font size */
-    margin-top: 20px;
-    font-family: sans-serif;
+h1{
+    font-size: 60px;
+    font-weight: 600;
+    color: #EFECEC;
 }
-
-.content p {
-    margin: 20px auto;
-    font-weight: 100;
-    line-height: 1.5;
-    font-size: 2vw; /* Responsive font size */
+p{
+    color: #FC6736;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+    font-family: "Inter", sans-serif;
 }
-
-.button {
-    width: 40%;
+h2{
+    color: #0C2D57;
+    font-size: 35px;
+    font-family: "Inter", sans-serif;
+}
+.row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+.offers-col{
+    flex-basis: 30%;
+    background: #EFECEC;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+}
+.btn{
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 310px;
+}
+button{
+    width: 200px;
     padding: 15px 0;
-    font-size: 2.5vw; /* Responsive font size */
-    margin: 20px auto;
+    text-align: center;
+    font-size: 20px;
+    margin: 20px 10px;
     border-radius: 55px;
-    font-weight: bold;
-    border: 2px solid #009688;
+    /* font-weight: bold; */
+    border: 2px solid #FC6736;
     background: transparent;
     color: white;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    display: inline-block;
-    text-decoration: none;
 }
-
-.button:hover span {
-    width: 100%;
-}
-
-.button:hover {
+button:hover{
     border: none;
+    background: #FC6736;
+    color: #000;
+    transition: 0.2s;
 }
-
-.button span {
-    background: #638889;
-    height: 100%;
-    width: 0%;
-    border-radius: 25px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: 0.5s;
-}
-
-@media screen and (max-width: 768px) {
-    .logo {
-        width: 60%;
-    }
-
-    .content h1 {
-        font-size: 8vw; /* Responsive font size */
-    }
-
-    .content p {
-        font-size: 4vw; /* Responsive font size */
-    }
-
-    .button {
-        width: 60%;
-        font-size: 4vw; /* Responsive font size */
-    }
-}
-
