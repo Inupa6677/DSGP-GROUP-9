@@ -231,9 +231,18 @@ severity_mapping_inverse = {
     1: 'Fatal',
 }
 
+
 @app.route('/')
 def index():
     return render_template('homepage.html')
+
+@app.route('/login', methods=['GET','POST'])
+def home_page():
+    if request.method == "POST":
+        print(request.form)
+        Message = {'Message':"Python says hello"}
+        return Message
+    return render_template('loginpage.html')
 
 
 @app.route('/prediction_page', methods=['GET', 'POST'])

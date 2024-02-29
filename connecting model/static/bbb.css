@@ -132,3 +132,52 @@ nav img{
     margin: 0;
     padding: 0;
 }
+
+
+
+
+
+
+
+
+.input-field {
+  margin-bottom: 1rem;
+}
+
+.input-field input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.input-field input:focus {
+  outline: none;
+  border-color: dodgerblue;
+}
+
+.input-field input.error {
+  border-color: red;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: dodgerblue;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1e90ff;
+}
+
+.social-media {
+  margin-top: 1rem;
+}
+
+.social-icon {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
