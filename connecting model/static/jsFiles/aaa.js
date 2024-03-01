@@ -4,7 +4,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+var data = {
+    Latitude: 0,
+    longitude: 1,
 
+};
+
+// Convert the object or array to a JSON string
+var jsonString = JSON.stringify(data);
+
+// Store the JSON string in local storage
+localStorage.setItem('myData',jsonString);
 
 function focusMapOnDistrict() {
 const district = document.getElementById("district-dropdown").value;
@@ -433,18 +443,16 @@ const district = document.getElementById("district-dropdown").value;
         // Get the coordinates of the district
         var coordinates = districtCoordinates[district];
         alert(coordinates);
-        var data = {
-    Latitude: coordinates[0],
-    longitude: coordinates[1],
 
-};
 
-// Convert the object or array to a JSON string
-var jsonString = JSON.stringify(data);
+        // Retrieve the existing data from local storage
+var storedData = localStorage.getItem('myData');
+var data = JSON.parse(storedData);
 
-// Store the JSON string in local storage
-localStorage.setItem('myData',jsonString);
-alert(data);
+// Update the latitude and longitude values
+data.latitude = coordinates[0]; // Example new latitude value
+data.longitude = coordinates[1]; // Example new longitude value
+
 
         var map = L.map('map').setView(coordinates, 10); // Default to London
         alert(map);
