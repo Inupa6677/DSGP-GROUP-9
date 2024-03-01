@@ -20,17 +20,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        const username = document.getElementById('username');
-        const password = document.getElementById('password');
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
         // Check if username is empty
-        if (username.value.trim() === '') {
+        if (username.trim() === '') {
             alert('Username is required.');
             return;
         }
 
         // Check if password is empty
-        if (password.value.trim() === '') {
+        if (password.trim() === '') {
             alert('Password is required.');
             return;
         }
@@ -42,44 +42,44 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById('signup-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        const username = document.getElementById('username');
-        const email = document.getElementById('email');
-        const newPassword = document.getElementById('new-password');
-        const confirmPassword = document.getElementById('confirm-password');
+        const username = document.getElementById('username').value; // Get the value of the username input
+        const email = document.getElementById('email').value; // Get the value of the email input
+        const newPassword = document.getElementById('new-password').value; // Get the value of the new password input
+        const confirmPassword = document.getElementById('confirm-password').value; // Get the value of the confirm password input
 
         // Check if username is empty
-        if (username.value.trim() === '') {
+        if (username.trim() === '') {
             alert('Username is required.');
             return;
         }
 
         // Check if email is empty
-        if (email.value.trim() === '') {
+        if (email.trim() === '') {
             alert('Email is required.');
             return;
         }
 
         // Check if the entered value is in a valid email format using a regular expression
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email.value.trim())) {
+        if (!emailPattern.test(email)) {
             alert('Please enter a valid email address.');
             return;
         }
 
         // Check if new password is empty
-        if (newPassword.value.trim() === '') {
+        if (newPassword.trim() === '') {
             alert('New password is required.');
             return;
         }
 
         // Check if confirm password is empty
-        if (confirmPassword.value.trim() === '') {
+        if (confirmPassword.trim() === '') {
             alert('Confirm password is required.');
             return;
         }
 
         // Check if passwords match
-        if (newPassword.value !== confirmPassword.value) {
+        if (newPassword !== confirmPassword) {
             alert('Passwords do not match.');
             return;
         }

@@ -63,10 +63,11 @@ form{
     transition: 0.5s ease-in-out;
     transition-delay: 1s;
 }
-.title{
+.title {
     font-size: 35px;
     color: #000000;
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* Increase margin-bottom */
+    margin-top: 20px; /* Add margin-top to move it down */
 }
 .input-field{
     width: 100%;
@@ -174,10 +175,11 @@ a{
     transition: 1s ease-in-out;
     transition-delay: 0.1s;
 }
-.panel h3{
+.panel h3 {
     font-size: 35px;
     font-weight: 600;
     color: #000;
+    margin-top: 30px;
 }
 .panel p{
     font-size: 25px;
@@ -340,12 +342,7 @@ body {
     margin-bottom: 20px;
 }
 
-.input-field input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+
 
 .input-field input:focus {
     outline: none;
@@ -354,3 +351,23 @@ body {
 .error {
     border-color: red !important;
 }
+
+.panel .content {
+    color: #EFECEC;
+    transition: 1s ease-in-out;
+    transition-delay: 0.1s;
+    margin-top: 65px; /* Add margin-top here */
+}
+
+#signup-title {
+    font-size: 35px;
+    color: #000000;
+    margin-bottom: 20px; /* Increase margin-bottom */
+    margin-top: 75px; /* Add margin-top to move it down further */
+}
+
+#member-content {
+    margin-top: 25px; /* Adjust this value to move the content up */
+}
+
+
