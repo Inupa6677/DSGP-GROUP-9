@@ -131,20 +131,7 @@ form {
     text-align: center;
 }
 
-/* Navigation Bar Styles */
-.navbar {
-    background-color: #FFF; /* Change as needed */
-    height: 60px; /* Adjust as needed */
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    position: fixed; /* Keep it on top */
-    top: 0;
-}
+
 
 .logo {
     height: 50px; /* Adjust as needed */
@@ -155,57 +142,138 @@ form {
     margin-top: 60px; /* Should be equal to or greater than the height of the navbar */
 }
 
-/* Additional styles for your existing content */
-/* ... */
-
-.header{
-    min-height: 100vh;
+/* Navigation Styles */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../image/bg.png);
-    background-position: center;
-    background-size: cover;
-    position: relative;
-}
-nav{
+    z-index: 1000; /* Ensure it has a higher z-index */
     display: flex;
-    padding: 5px 35px;
     justify-content: space-between;
     align-items: center;
-    width: auto;
-    height: 100px;
+    height: 60px;
     background-color: #EFECEC;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-nav img{
-    width: 300px;
-    padding: 15px;
+
+nav img {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 80px;
+    padding: 5px;
 }
-.nav-links{
-    flex: 1;
+
+.nav-links {
     text-align: right;
 }
-.nav-links ul li{
-    list-style:  none;
-    display: inline-block;
-    padding: 8px 12px;
-    position: relative;
+
+.nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-.nav-links ul li a{
+
+.nav-links ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.nav-links ul li:first-child {
+    margin-left: 0;
+}
+
+.nav-links ul li a {
     color: #0C2D57;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 16px;
     font-family: 'Poppins', sans-serif;
+    padding: 10px;
 }
-.nav-links ul li::after{
+
+.nav-links ul li::after {
     content: '';
     width: 0;
     height: 2px;
     background: #0C2D57;
     display: block;
     margin: auto;
-    transition: 0.5s;
+    transition: width 0.3s ease;
 }
-.nav-links ul li:hover::after{
-    width: auto;
+
+.nav-links ul li a:hover {
+    color: #FC6736;
 }
+
+/* Container Styles */
+.container {
+    margin-top: 60px; /* Adjust as needed */
+}
+
+/* Other Styles */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-half, .right-half {
+    flex: 1;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+form {
+    max-width: 600px;
+    width: 100%;
+}
+
+.predictions {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+.predictions h2 {
+    color: #0066cc;
+}
+
+.predictions p {
+    color: #333;
+}
+
+#road-type-condition {
+    padding: 15px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+#new-box {
+    padding: 15px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.logo {
+    height: 50px;
+}
+
+
 
 

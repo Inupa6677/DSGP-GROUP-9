@@ -1,12 +1,88 @@
-body {
-    font-family: Arial, sans-serif;
+
+
+/* Navigation Styles */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it has a higher z-index */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: #EFECEC;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav img {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 80px;
+    padding: 5px;
+}
+
+.nav-links {
+    text-align: right;
+}
+
+.nav-links ul {
+    list-style: none;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+}
+
+.nav-links ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.nav-links ul li:first-child {
+    margin-left: 0;
+}
+
+.nav-links ul li a {
+    color: #0C2D57;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px;
+}
+
+.nav-links ul li::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #0C2D57;
+    display: block;
+    margin: auto;
+    transition: width 0.3s ease;
+}
+
+.nav-links ul li a:hover {
+    color: #FC6736;
+}
+
+
+/* Header Styles */
+.header {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../image/bg.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+/* Main Content Styles */
+.container {
+    margin-top: 60px; /* Ensure content does not overlap with the navbar */
 }
 
 h1 {
     text-align: center;
+    margin-top: 30px; /* Adjust as needed */
 }
 
 form {
@@ -20,13 +96,13 @@ form {
 
 form label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 form select, form button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -44,140 +120,18 @@ form button:hover {
 }
 
 #prediction-result {
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: center;
 }
+
 .prediction-box {
     margin-top: 20px;
-    padding: 10px;
+    padding: 15px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.navbar {
-    background-color: #FFF; /* Or any color you prefer */
-    height: 60px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-}
-
-.logo {
-    height: 50px; /* Adjust as needed */
-}
-
-/* Main Content Padding */
-body {
-    padding-top: 60px; /* This should be at least the height of the navbar */
-}
-
-.header{
-    min-height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../image/bg.png);
-    background-position: center;
-    background-size: cover;
-    position: relative;
-}
-nav{
-    display: flex;
-    padding: 5px 35px;
-    justify-content: space-between;
-    align-items: center;
-    width: auto;
-    height: 100px;
-    background-color: #EFECEC;
-}
-nav img{
-    width: 300px;
-    padding: 15px;
-}
-.nav-links{
-    flex: 1;
-    text-align: right;
-}
-.nav-links ul li{
-    list-style:  none;
-    display: inline-block;
-    padding: 8px 12px;
-    position: relative;
-}
-.nav-links ul li a{
-    color: #0C2D57;
-    text-decoration: none;
-    font-size: 20px;
-    font-family: 'Poppins', sans-serif;
-}
-.nav-links ul li::after{
-    content: '';
-    width: 0;
-    height: 2px;
-    background: #0C2D57;
-    display: block;
-    margin: auto;
-    transition: 0.5s;
-}
-.nav-links ul li:hover::after{
-    width: auto;
-}
-
-*{
-    margin: 0;
-    padding: 0;
-}
-
-
-
-
-
-
-
-
-.input-field {
-  margin-bottom: 1rem;
-}
-
-.input-field input {
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 100%;
-}
-
-.input-field input:focus {
-  outline: none;
-  border-color: dodgerblue;
-}
-
-.input-field input.error {
-  border-color: red;
-}
-
-.btn {
-  padding: 0.5rem 1rem;
-  background-color: dodgerblue;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #1e90ff;
-}
-
-.social-media {
-  margin-top: 1rem;
-}
-
-.social-icon {
-  margin-right: 0.5rem;
-  font-size: 1.5rem;
+#accident-severity {
+    margin-top: 100px; /* Adjust the margin-top value as needed */
 }

@@ -10,47 +10,66 @@
     background-size: cover;
     position: relative;
 }
-nav{
+
+nav {
     display: flex;
-    padding: 5px 35px;
     justify-content: space-between;
     align-items: center;
-    width: auto;
-    height: 100px;
+    height: 60px; /* Adjust height as needed */
     background-color: #EFECEC;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
 }
-nav img{
-    width: 300px;
-    padding: 15px;
+
+nav img {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 80px;
+    padding: 5px;
 }
-.nav-links{
-    flex: 1;
+
+
+.nav-links {
     text-align: right;
 }
-.nav-links ul li{
-    list-style:  none;
-    display: inline-block;
-    padding: 8px 12px;
-    position: relative;
+
+.nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-.nav-links ul li a{
+
+.nav-links ul li {
+    display: inline-block;
+    margin-left: 20px; /* Adjust spacing between links */
+}
+
+.nav-links ul li:first-child {
+    margin-left: 0; /* Remove margin from the first link */
+}
+
+.nav-links ul li a {
     color: #0C2D57;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 16px; /* Adjust font size */
     font-family: 'Poppins', sans-serif;
+    padding: 10px; /* Adjust padding */
 }
-.nav-links ul li::after{
+
+.nav-links ul li::after {
     content: '';
     width: 0;
     height: 2px;
     background: #0C2D57;
     display: block;
     margin: auto;
-    transition: 0.5s;
+    transition: width 0.3s ease; /* Adjust transition speed */
 }
-.nav-links ul li:hover::after{
-    width: auto;
+
+.nav-links ul li a:hover {
+    color: #FC6736;
 }
+
 .offers{
     width: 80%;
     margin: auto;
@@ -115,3 +134,13 @@ button:hover{
     color: #000;
     transition: 0.2s;
 }
+
+#safety-message {
+    color: white;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif; /* Change to the desired font */
+    /* Add any additional styling you want here */
+}
+
