@@ -247,51 +247,10 @@ def signup_page():
 
 @app.route('/')
 def index():
-    return render_template('homepage.html')
-
-
-
-def retrieve_data(request):
-    # Getting data from the webpage Form
-    data = request.form
-    # Converting data to a dictionary
-    data = dict(data)
-    return data
-
-@app.route('/signup', methods=['POST'])
-def signup():
-    data = retrieve_data(request)
-    print("Data received from form:", data)
-    username = data.get('username')
-    email = data.get('email')
-    new_password = data.get('new_password')
-    confirm_password = data.get('confirm_password')
-
-    # Check if username already exists in the database
-    if collection.find_one({'username': username}):
-        return 'Username already exists!'
-
-    # Check if passwords match
-    if new_password != confirm_password:
-        return 'Passwords do not match!'
-
-    # If username doesn't exist and passwords match, insert new user data into MongoDB
-    user_data = {
-        'username': username,
-        'email': email,
-        'password': new_password
-    }
-    collection.insert_one(user_data)
-    return 'User signed up successfully!'
-
-
-@app.route('/login', methods=['GET','POST'])
-def home_page():
-    if request.method == "POST":
-        print(request.form)
-        Message = {'Message':"Python says hello"}
-        return Message
     return render_template('loginpage.html')
+
+
+
 
 
 @app.route('/prediction_page', methods=['GET', 'POST'])

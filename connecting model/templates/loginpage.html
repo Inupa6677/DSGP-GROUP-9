@@ -35,7 +35,7 @@
                 <h2 class="title" id="signup-title"> Sign up </h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="username" placeholder="Username">
+                    <input type="text" id="user_name" placeholder="Username">
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
@@ -86,6 +86,8 @@
          </div> 
         </div>
     </div>
-    <script src="{{ url_for('static', filename='jsFiles/loginpage.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='jsFiles/loginpage.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 </body>
+
 </html>
