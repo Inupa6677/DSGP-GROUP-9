@@ -250,6 +250,10 @@ def index():
     return render_template('loginpage.html')
 
 
+@app.route('/home_page')
+def home_page():
+    return render_template('homepage.html')
+
 
 
 

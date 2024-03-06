@@ -13,10 +13,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
-alert(database)
 
 var hForm = firebase.database().ref('users');
-
 
 document.addEventListener("DOMContentLoaded", function() {
     const sign_in_btn = document.querySelector("#sign-in-btn");
@@ -38,34 +36,12 @@ document.addEventListener("DOMContentLoaded", function() {
         container.classList.remove("sign-up-mode2");
     });
 
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
+    document.getElementById('signup-form').addEventListener('submit', async function(event) {
         event.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        // Check if username is empty
-        if (username.trim() === '') {
-            alert('Username is required.');
-            return;
-        }
-
-        // Check if password is empty
-        if (password.trim() === '') {
-            alert('Password is required.');
-            return;
-        }
-
-        // If all checks pass, display success message
-        alert('Login successful!');
-        // Additional login logic can be placed here
-    });
-
-    document.getElementById('signup-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const username = document.getElementById('user_name').value; // Get the value of the username input
-        const email = document.getElementById('email').value; // Get the value of the email input
-        const newPassword = document.getElementById('new-password').value; // Get the value of the new password input
-        const confirmPassword = document.getElementById('confirm-password').value; // Get the value of the confirm password input
+        const username = document.getElementById('user_name').value;
+        const email = document.getElementById('email').value;
+        const newPassword = document.getElementById('new-password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
 
         // Check if username is empty
         if (username.trim() === '') {
@@ -103,27 +79,84 @@ document.addEventListener("DOMContentLoaded", function() {
             alert('Passwords do not match.');
             return;
         }
-        saveMessages(username, email, password, confirmPassword);
-        // If all checks pass, display success message
+
+        // Check if username or email already exists
+        const userExists = await checkUserExists(username, email);
+        if (userExists) {
+            alert('Username or email already exists.');
+            return;
+        }
+
+        // Save user information if username and email are unique
+        saveMessages(username, email, newPassword, confirmPassword);
+
+        // Display success message and redirect after 2 seconds
         alert('Signup successful!');
         setTimeout(() => {
-  window.location.href = '/login_page';
-    }, 2000);
-        // Additional signup logic can be placed here
+            window.location.href = '/login_page';
+        }, 2000);
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Check if username is empty
+        if (username.trim() === '') {
+            alert('Username is required.');
+            return;
+        }
+
+        // Check if password is empty
+        if (password.trim() === '') {
+            alert('Password is required.');
+            return;
+        }
+
+        // Check if user exists and credentials are valid
+        const isValidUser = await checkUserCredentials(username, password);
+        if (isValidUser) {
+            alert('Login successful!');
+            // Redirect to home page or perform other actions for authenticated user
+            window.location.href = '/home_page'; // Adjust the URL as needed
+        } else {
+            alert('Invalid username or password. Please sign up.');
+        }
     });
 });
 
-
-const saveMessages = (username, email, password, confirmPassword) => {
-  var newhForm = hForm.child(username);
-
-  newhForm.set({
-    email: email,
-    userName: username,
-    password: password,
-    confirmPassword: confirmPassword
-  });
+// Function to check if username or email already exists
+const checkUserExists = async (username, email) => {
+    const snapshot = await firebase.database().ref('users').once('value');
+    const users = snapshot.val();
+    if (users) {
+        // Check if username or email exists in the database
+        const existingUser = Object.values(users).find(user => user.userName === username || user.email === email);
+        return existingUser ? true : false;
+    }
+    return false;
 };
 
+// Function to check if user credentials are valid
+const checkUserCredentials = async (username, password) => {
+    const snapshot = await firebase.database().ref('users').once('value');
+    const users = snapshot.val();
+    if (users) {
+        // Check if username and password match with any user in the database
+        const user = Object.values(users).find(user => user.userName === username && user.password === password);
+        return user ? true : false;
+    }
+    return false;
+};
 
+const saveMessages = (username, email, password, confirmPassword) => {
+    var newhForm = hForm.child(username);
 
+    newhForm.set({
+        email: email,
+        userName: username,
+        password: password,
+        confirmPassword: confirmPassword
+    });
+};
