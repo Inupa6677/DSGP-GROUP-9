@@ -232,19 +232,6 @@ severity_mapping_inverse = {
 }
 
 
-client = MongoClient('mongodb+srv://testinupa:inupaPCC123@cluster0.counube.mongodb.net/')
-db = client['Accitracker']
-collection = db['user_data']
-
-
-
-
-
-@app.route('/login_page')
-def signup_page():
-    return render_template('loginpage.html')
-
-
 @app.route('/')
 def index():
     return render_template('loginpage.html')

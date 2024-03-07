@@ -114,14 +114,12 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // Check if user exists and credentials are valid
         const isValidUser = await checkUserCredentials(username, password);
         if (isValidUser) {
             alert('Login successful!');
-            // Redirect to home page or perform other actions for authenticated user
-            window.location.href = '/home_page'; // Adjust the URL as needed
+            window.location.href = '/home_page';
         } else {
-            alert('Invalid username or password. Please sign up.');
+            alert('Invalid username or password. Please try again.');
         }
     });
 });
@@ -138,13 +136,15 @@ const checkUserExists = async (username, email) => {
     return false;
 };
 
-// Function to check if user credentials are valid
+// Check if user credentials are valid
 const checkUserCredentials = async (username, password) => {
     const snapshot = await firebase.database().ref('users').once('value');
     const users = snapshot.val();
+    console.log("Retrieved users:", users); // Debugging line
     if (users) {
-        // Check if username and password match with any user in the database
+        // Check for matching username and password
         const user = Object.values(users).find(user => user.userName === username && user.password === password);
+        console.log("Found user:", user); // Debugging line
         return user ? true : false;
     }
     return false;
