@@ -36,8 +36,12 @@ document.addEventListener("DOMContentLoaded", function() {
         container.classList.remove("sign-up-mode2");
     });
 
-    document.getElementById('signup-form').addEventListener('submit', async function(event) {
+    document.getElementById('signup-form').addEventListener('submit', async function (event) {
         event.preventDefault();
+
+
+        alert("hello")
+
         const username = document.getElementById('user_name').value;
         const email = document.getElementById('email').value;
         const newPassword = document.getElementById('new-password').value;
@@ -97,8 +101,52 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 2000);
     });
 
-    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+
+// Function to check if username or email already exists
+    const checkUserExists = async (username, email) => {
+        const snapshot = await firebase.database().ref('users').once('value');
+        const users = snapshot.val();
+        if (users) {
+            // Check if username or email exists in the database
+            const existingUser = Object.values(users).find(user => user.userName === username || user.email === email);
+            return existingUser ? true : false;
+        }
+        return false;
+    };
+
+// Check if user credentials are valid
+    const checkUserCredentials = async (username, password) => {
+        const snapshot = await firebase.database().ref('users').once('value');
+        const users = snapshot.val();
+        console.log("Retrieved users:", users); // Debugging line
+        if (users) {
+            // Check for matching username and password
+            const user = Object.values(users).find(user => user.userName === username && user.password === password);
+            console.log("Found user:", user); // Debugging line
+            return user ? true : false;
+        }
+        return false;
+    };
+
+
+
+    const saveMessages = (username, email, password, confirmPassword) => {
+        var newhForm = hForm.child(username);
+
+        newhForm.set({
+            email: email,
+            userName: username,
+            password: password,
+            confirmPassword: confirmPassword
+        });
+    };
+
+});
+
+document.getElementById('loginForm').addEventListener('submit', async function (event)  {
+        alert("Hello");
         event.preventDefault();
+
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
@@ -114,49 +162,32 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        const isValidUser = await checkUserCredentials(username, password);
-        if (isValidUser) {
-            alert('Login successful!');
-            window.location.href = '/home_page';
-        } else {
-            alert('Invalid username or password. Please try again.');
-        }
-    });
+        hForm.child(username).once('value', function(snapshot) {
+        const userData = snapshot.val();
+
+        alert(userData)
+        if (userData) {
+            const storedPassword = userData.confirmPassword;
+            const storedEmail = userData.userName;
+
+            alert(storedEmail);
+
+            alert(password)
+            alert(storedPassword)
+
+            if (password === storedPassword) {
+              alert("Login Successfull")
+
+              setTimeout(() => {
+                window.location.href = '/home_page';
+            }, 1000);
+
+            } else {
+              displayAlert("Incorrect password")
+            }
+          } else {
+            displayAlert("User not Found")
+          }
+  });
 });
 
-// Function to check if username or email already exists
-const checkUserExists = async (username, email) => {
-    const snapshot = await firebase.database().ref('users').once('value');
-    const users = snapshot.val();
-    if (users) {
-        // Check if username or email exists in the database
-        const existingUser = Object.values(users).find(user => user.userName === username || user.email === email);
-        return existingUser ? true : false;
-    }
-    return false;
-};
-
-// Check if user credentials are valid
-const checkUserCredentials = async (username, password) => {
-    const snapshot = await firebase.database().ref('users').once('value');
-    const users = snapshot.val();
-    console.log("Retrieved users:", users); // Debugging line
-    if (users) {
-        // Check for matching username and password
-        const user = Object.values(users).find(user => user.userName === username && user.password === password);
-        console.log("Found user:", user); // Debugging line
-        return user ? true : false;
-    }
-    return false;
-};
-
-const saveMessages = (username, email, password, confirmPassword) => {
-    var newhForm = hForm.child(username);
-
-    newhForm.set({
-        email: email,
-        userName: username,
-        password: password,
-        confirmPassword: confirmPassword
-    });
-};
