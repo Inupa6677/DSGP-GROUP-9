@@ -39,10 +39,116 @@
           </div>
 
      </section>
-     <section>
-        
-     </section>
 
+<!-- liverpool road type------------------------------------------------------------------------------------ -->
+
+  <section>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Road Type', 'Accident Count'],
+          ['Single Carriageway', 827],
+          ['Dual carriageway', 412],
+          ['One Way', 45],
+          ['Roundabout', 43],
+          ['Slip Road', 6],
+          ['Others', 1]
+        ]);
+
+        var options = {title: 'Accident Count for Each Road Type'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+<!-- liverpool speed limit------------------------------------------------------------------------------ -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Speed Limit', 'Accident Count'],
+          ['20 km/h', 39],
+          ['30 km/h', 1173],
+          ['40 km/h', 116],
+          ['50 km/h', 3],
+          ['60 km/h', 1],
+          ['70 km/h', 2]
+        ]);
+
+        var options = {title: 'Accident Count for Each Speed Limit'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- liverpool acc count each day----------------------------------------------------------------------------- -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day of the Week', '2010', '2009','2008', '2007','2006'],
+          ['MON',  194,184,205,246,227],
+          ['TUE',  197,178,215,254,271],
+          ['WED',  193,213,236,237,240],
+          ['THU',  194,179,210,238,268],
+          ['FRI',  232,231,220,243,323],
+          ['SAT',  191,179,190,180,212],
+          ['SUN',  133,133,149,153,177]
+        ]);
+
+        var options = {
+          title: 'Accident count of past five years',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <div class="analysis">
+
+    <h2>Liverpool</h2>
+
+    <div class="row">
+        <div class="col">
+            <div class="piechart" id="piechart1"></div>
+        </div>
+        <div class="col">
+          <div class="piechart" id="piechart2"></div>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col">
+        <div class="curve_chart" id="curve_chart"></div>
+      </div>
+  </div>
+
+  </section>
+<!-- ------------------------------------------------------------------------------------- -->
     <script src="js/analyst.js"></script>
 
 </body>
