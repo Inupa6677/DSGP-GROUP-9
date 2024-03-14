@@ -148,6 +148,115 @@
   </div>
 
   </section>
+
+  <!-- knowsley road type------------------------------------------------------------------------------------ -->
+
+  <section>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Road Type', 'Accident Count'],
+          ['Single Carriageway', 207],
+          ['Dual carriageway', 78],
+          ['One Way', 4],
+          ['Roundabout', 32],
+          ['Slip Road', 8],
+          ['Others', 0]
+        ]);
+
+        var options = {title: 'Accident Count for Each Road Type'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+<!-- knowsley speed limit------------------------------------------------------------------------------ -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Speed Limit', 'Accident Count'],
+          ['20 km/h', 4],
+          ['30 km/h', 217],
+          ['40 km/h', 46],
+          ['50 km/h', 4],
+          ['60 km/h', 22],
+          ['70 km/h', 36]
+        ]);
+
+        var options = {title: 'Accident Count for Each Speed Limit'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- knowsley acc count each day----------------------------------------------------------------------------- -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day of the Week', '2010', '2009','2008', '2007','2006'],
+          ['MON',  59,50,51,55,71],
+          ['TUE',  39,43,51,66,61],
+          ['WED',  52,50,56,73,74],
+          ['THU',  47,61,59,71,73],
+          ['FRI',  53,56,55,58,70],
+          ['SAT',  42,34,45,39,39],
+          ['SUN',  37,38,34,31,46]
+        ]);
+
+        var options = {
+          title: 'Accident count of past five years',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <div class="analysis">
+
+    <h2>Knowsley</h2>
+
+    <div class="row">
+        <div class="col">
+            <div class="piechart" id="piechart3"></div>
+        </div>
+        <div class="col">
+          <div class="piechart" id="piechart4"></div>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col">
+        <div class="curve_chart" id="curve_chart1"></div>
+      </div>
+  </div>
+
+  </section>
 <!-- ------------------------------------------------------------------------------------- -->
     <script src="js/analyst.js"></script>
 
