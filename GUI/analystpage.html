@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 <body>
+  
     <section class="header">
 
         <nav>
@@ -23,7 +24,9 @@
             </ul>
            </div>
         </nav>
-<!-- ------------------------------------------------------------------------------------- -->
+        
+<!-- -search bar with dropdown list ------------------------------------------------------------------------- -->
+
         <div class="wrapper">
             <div class="select-btn">
               <span>Select Local Authority District</span>
@@ -62,7 +65,7 @@
           ['Others', 1]
         ]);
 
-        var options = {title: 'Accident Count for Each Road Type'};
+        var options = {title: 'Accident Percentage of Each Road Type'};
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
 
@@ -90,7 +93,7 @@
           ['70 km/h', 2]
         ]);
 
-        var options = {title: 'Accident Count for Each Speed Limit'};
+        var options = {title: 'Accident Percentage of Each Speed Limit'};
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
 
@@ -123,7 +126,7 @@
           legend: { position: 'bottom' }
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
 
         chart.draw(data, options);
       }
@@ -143,13 +146,13 @@
     </div>
     <div class="row1">
       <div class="col">
-        <div class="curve_chart" id="curve_chart"></div>
+        <div class="curve_chart" id="curve_chart1"></div>
       </div>
   </div>
 
   </section>
 
-  <!-- knowsley road type------------------------------------------------------------------------------------ -->
+  <!-- knowsley road type----------------------------------------------------------------------------------- -->
 
   <section>
 
@@ -171,7 +174,7 @@
           ['Others', 0]
         ]);
 
-        var options = {title: 'Accident Count for Each Road Type'};
+        var options = {title: 'Accident Percentage of Each Road Type'};
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
 
@@ -199,7 +202,7 @@
           ['70 km/h', 36]
         ]);
 
-        var options = {title: 'Accident Count for Each Speed Limit'};
+        var options = {title: 'Accident Percentage of Each Speed Limit'};
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
 
@@ -232,7 +235,7 @@
           legend: { position: 'bottom' }
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart2'));
 
         chart.draw(data, options);
       }
@@ -252,12 +255,448 @@
     </div>
     <div class="row1">
       <div class="col">
-        <div class="curve_chart" id="curve_chart1"></div>
+        <div class="curve_chart" id="curve_chart2"></div>
       </div>
   </div>
 
   </section>
-<!-- ------------------------------------------------------------------------------------- -->
+
+  <!-- manchester road type--------------------------------------------------------------------------------- -->
+
+  <section>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Road Type', 'Accident Count'],
+          ['Single Carriageway', 1077],
+          ['Dual carriageway', 247],
+          ['One Way',34],
+          ['Roundabout', 42],
+          ['Slip Road', 12],
+          ['Others', 13]
+        ]);
+
+        var options = {title: 'Accident Percentage of Each Road Type'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart5'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+<!-- manchester speed limit------------------------------------------------------------------------------ -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Speed Limit', 'Accident Count'],
+          ['20 km/h', 33],
+          ['30 km/h', 1267],
+          ['40 km/h', 84],
+          ['50 km/h', 17],
+          ['60 km/h', 0],
+          ['70 km/h', 24]
+        ]);
+
+        var options = {title: 'Accident Percentage of Each Speed Limit'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart6'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- manchester count each day----------------------------------------------------------------------------- -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day of the Week', '2010'],
+          ['MON',  179],
+          ['TUE',  228],
+          ['WED',  202],
+          ['THU',  232],
+          ['FRI',  242],
+          ['SAT',  169],
+          ['SUN',  173]
+        ]);
+
+        var options = {
+          title: 'Accident count of Each Day',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart3'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <div class="analysis">
+
+    <h2>Manchester</h2>
+
+    <div class="row">
+        <div class="col">
+            <div class="piechart" id="piechart5"></div>
+        </div>
+        <div class="col">
+          <div class="piechart" id="piechart6"></div>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col">
+        <div class="curve_chart" id="curve_chart3"></div>
+      </div>
+  </div>
+
+  </section>
+
+  <!-- leeds road type-------------------------------------------------------------------------------------- -->
+
+  <section>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Road Type', 'Accident Count'],
+          ['Single Carriageway', 1327],
+          ['Dual carriageway',    431],
+          ['One Way',              41],
+          ['Roundabout',          109],
+          ['Slip Road',            40],
+          ['Others',                6]
+        ]);
+
+        var options = {title: 'Accident Percentage of Each Road Type'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart7'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+<!-- leeds speed limit------------------------------------------------------------------------------ -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Speed Limit', 'Accident Count'],
+          ['20 km/h', 4],
+          ['30 km/h', 1397],
+          ['40 km/h', 269],
+          ['50 km/h', 55],
+          ['60 km/h', 92],
+          ['70 km/h', 137]
+        ]);
+
+        var options = {title: 'Accident Percentage of Each Speed Limit'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart8'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- leeds count each day----------------------------------------------------------------------------- -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day of the Week', '2010'],
+          ['MON',  280],
+          ['TUE',  283],
+          ['WED',  327],
+          ['THU',  305],
+          ['FRI',  321],
+          ['SAT',  234],
+          ['SUN',  204]
+        ]);
+
+        var options = {
+          title: 'Accident count of Each Day',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart4'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <div class="analysis">
+
+    <h2>Leeds</h2>
+
+    <div class="row">
+        <div class="col">
+            <div class="piechart" id="piechart7"></div>
+        </div>
+        <div class="col">
+          <div class="piechart" id="piechart8"></div>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col">
+        <div class="curve_chart" id="curve_chart4"></div>
+      </div>
+  </div>
+
+  </section>
+
+  <!-- Birmingham road type--------------------------------------------------------------------------------- -->
+
+  <section>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Road Type', 'Accident Count'],
+          ['Single Carriageway', 1909],
+          ['Dual carriageway',    638],
+          ['One Way',              75],
+          ['Roundabout',          229],
+          ['Slip Road',            24],
+          ['Others',                1]
+        ]);
+
+        var options = {title: 'Accident Percentage of Each Road Type'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart9'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+<!-- Birmingham speed limit------------------------------------------------------------------------------ -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Speed Limit', 'Accident Count'],
+          ['20 km/h', 19],
+          ['30 km/h', 2490],
+          ['40 km/h', 299],
+          ['50 km/h', 13],
+          ['60 km/h', 6],
+          ['70 km/h', 49]
+        ]);
+
+        var options = {title: 'Accident Percentage of Each Speed Limit'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart10'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- Birmingham count each day----------------------------------------------------------------------------- -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day of the Week', '2010'],
+          ['MON',  436],
+          ['TUE',  490],
+          ['WED',  408],
+          ['THU',  420],
+          ['FRI',  434],
+          ['SAT',  417],
+          ['SUN',  271]
+        ]);
+
+        var options = {
+          title: 'Accident count of Each Day',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart5'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <div class="analysis">
+
+    <h2>Birmingham</h2>
+
+    <div class="row">
+        <div class="col">
+            <div class="piechart" id="piechart9"></div>
+        </div>
+        <div class="col">
+          <div class="piechart" id="piechart10"></div>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col">
+        <div class="curve_chart" id="curve_chart5"></div>
+      </div>
+  </div>
+
+  </section>
+
+  <!-- Westminster road type-------------------------------------------------------------------------------- -->
+
+  <section>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Road Type', 'Accident Count'],
+          ['Single Carriageway', 1407],
+          ['Dual carriageway',    197],
+          ['One Way',              79],
+          ['Roundabout',           36],
+          ['Slip Road',             2],
+          ['Others',                0]
+        ]);
+
+        var options = {title: 'Accident Percentage of Each Road Type'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart11'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+<!-- Westminster speed limit------------------------------------------------------------------------------ -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Speed Limit', 'Accident Count'],
+          ['20 km/h', 2],
+          ['30 km/h', 1402],
+          ['40 km/h', 10],
+          ['50 km/h', 7],
+          ['60 km/h', 0],
+          ['70 km/h', 0]
+        ]);
+
+        var options = {title: 'Accident Percentage of Each Speed Limit'};
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart12'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- Westminster count each day----------------------------------------------------------------------------- -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day of the Week', '2010'],
+          ['MON',  194],
+          ['TUE',  235],
+          ['WED',  234],
+          ['THU',  218],
+          ['FRI',  214],
+          ['SAT',  177],
+          ['SUN',  149]
+        ]);
+
+        var options = {
+          title: 'Accident count of Each Day',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart6'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <div class="analysis">
+
+    <h2>Westminster</h2>
+
+    <div class="row">
+        <div class="col">
+            <div class="piechart" id="piechart11"></div>
+        </div>
+        <div class="col">
+          <div class="piechart" id="piechart12"></div>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col">
+        <div class="curve_chart" id="curve_chart6"></div>
+      </div>
+  </div>
+
+  </section>
+<!-- ------------------------------------------------------------------------------------------------------- -->
     <script src="js/analyst.js"></script>
 
 </body>
