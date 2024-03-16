@@ -39,9 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('signup-form').addEventListener('submit', async function (event) {
         event.preventDefault();
 
-
-        alert("hello")
-
         const username = document.getElementById('user_name').value;
         const email = document.getElementById('email').value;
         const newPassword = document.getElementById('new-password').value;
@@ -144,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.getElementById('loginForm').addEventListener('submit', async function (event)  {
-        alert("Hello");
         event.preventDefault();
 
         const username = document.getElementById('username').value;
@@ -165,15 +161,9 @@ document.getElementById('loginForm').addEventListener('submit', async function (
         hForm.child(username).once('value', function(snapshot) {
         const userData = snapshot.val();
 
-        alert(userData)
         if (userData) {
             const storedPassword = userData.confirmPassword;
             const storedEmail = userData.userName;
-
-            alert(storedEmail);
-
-            alert(password)
-            alert(storedPassword)
 
             if (password === storedPassword) {
               alert("Login Successfull")

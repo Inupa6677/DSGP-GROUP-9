@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify
 import pickle
 from pymongo import MongoClient
 
-
 app = Flask(__name__)
 
 # Load  prediction models
@@ -224,7 +223,6 @@ road_condition_mapping_severity = {
     'Frost or ice': 3,
 }
 
-
 severity_mapping_inverse = {
     3: 'Slight',
     2: 'Serious',
@@ -240,8 +238,6 @@ def index():
 @app.route('/home_page')
 def home_page():
     return render_template('homepage.html')
-
-
 
 
 @app.route('/prediction_page', methods=['GET', 'POST'])
@@ -305,4 +301,3 @@ def new_page():
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)
-
