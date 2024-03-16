@@ -1,14 +1,14 @@
-// Initialize the map with Leaflet (open street map)
-var map = L.map('map').setView([51.509865, -0.118092], 10); // Default to London
+// Initialize the map
+var map = L.map('map').setView([51.505, -0.09], 13); // setView([latitude, longitude], zoomLevel)
+
+// Add a tile layer to the map (replace the URL with your desired tile layer)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-var data = {
-    Latitude: 0,
-    longitude: 1,
+// Add a marker to the map (optional)
+var marker = L.marker([51.5, -0.09]).addTo(map);
 
-};
 
 // Convert the object or array to a JSON string
 var jsonString = JSON.stringify(data);

@@ -1,6 +1,10 @@
+import json
+
+import numpy as np
 from flask import Flask, render_template, request, jsonify
 import pickle
 from pymongo import MongoClient
+from sklearn.cluster import DBSCAN
 
 app = Flask(__name__)
 
@@ -255,12 +259,16 @@ def home():
 
         # Make predictions
         predictions = best_model.predict([input_values])
+        print(input_values)
         print(predictions)
         prediction_2 = road_type_prediction()
 
         return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]])
 
     return render_template('aaa.html', predictions=None)
+
+
+
 
 
 def road_type_prediction():
