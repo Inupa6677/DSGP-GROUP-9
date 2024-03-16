@@ -3,10 +3,6 @@ import json
 import numpy as np
 from flask import Flask, render_template, request, jsonify
 import pickle
-import pandas as pd
-from pymongo import MongoClient
-from sklearn.cluster import DBSCAN
-from sklearn.neighbors import KernelDensity
 
 app = Flask(__name__)
 
@@ -244,7 +240,6 @@ def index():
 @app.route('/home_page')
 def home_page():
     return render_template('homepage.html')
-
 
 
 @app.route('/prediction_page', methods=['GET', 'POST'])
