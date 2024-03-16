@@ -1,25 +1,5 @@
-// Initialize the map
-var map = L.map('map').setView([51.505, -0.09], 13); // setView([latitude, longitude], zoomLevel)
 
-// Add a tile layer to the map (replace the URL with your desired tile layer)
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
-// Add a marker to the map (optional)
-var marker = L.marker([51.5, -0.09]).addTo(map);
-
-
-// Convert the object or array to a JSON string
-var jsonString = JSON.stringify(data);
-
-// Store the JSON string in local storage
-localStorage.setItem('myData',jsonString);
-
-function focusMapOnDistrict() {
-const district = document.getElementById("district-dropdown").value;
-    // dictionary to map district with coordinates
-    var districtCoordinates = {
+var districtCoordinates = {
                 "Kensington and Chelsea": [51.50379515, -0.20078938323179596],
                 "Hammersmith and Fulham": [51.498314199999996, -0.22787818358222445],
                 "Westminster": [51.5004439, -0.1265398],
@@ -438,41 +418,26 @@ const district = document.getElementById("district-dropdown").value;
                 "Cheshire East" : [53.1670,-2.3625 ],
     };
 
-    // Check if the district exists in the dictionary
-    if (districtCoordinates.hasOwnProperty(district)) {
-        // Get the coordinates of the district
-        var coordinates = districtCoordinates[district];
-        alert(coordinates);
+// Function to focus the map on the selected district
+function focusDistrict(districtName) {
+    // Get the iframe element
+    var iframe = document.getElementById('mapIframe');
+    // Get the content window of the iframe
+    var iframeWindow = iframe.contentWindow;
 
-
-        // Retrieve the existing data from local storage
-var storedData = localStorage.getItem('myData');
-var data = JSON.parse(storedData);
-
-// Update the latitude and longitude values
-data.latitude = coordinates[0]; // Example new latitude value
-data.longitude = coordinates[1]; // Example new longitude value
-
-
-        var map = L.map('map').setView(coordinates, 10); // Default to London
-        alert(map);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        // Set the view of the map to the coordinates of the district and zoom in
-        //map.setView(coordinates, 14); // Adjust the zoom level as needed
+    // Check if the content window and the function to focus the map exist
+    if (iframeWindow && iframeWindow.focusMapOnDistrict) {
+        // Call the function inside the iframe to focus the map on the selected district
+        iframeWindow.focusMapOnDistrict(districtName);
     } else {
-        // District not found in the dictionary
-        alert('District coordinates not available.');
+        console.error("Map iframe or focusMapOnDistrict function not found.");
     }
 }
 
-
-
-const newPageButton = document.getElementById('new-page-button');
-        newPageButton.addEventListener('click', function() {
-            window.location.href = "/new_page";
-        });
-
-
+// Example usage:
+// Assuming you have a form with a select element for district selection
+var districtSelect = document.getElementById("districtSelect");
+districtSelect.addEventListener("change", function() {
+    var selectedDistrict = districtSelect.value;
+    focusDistrict(selectedDistrict);
+});

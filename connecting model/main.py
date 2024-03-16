@@ -3,8 +3,10 @@ import json
 import numpy as np
 from flask import Flask, render_template, request, jsonify
 import pickle
+import pandas as pd
 from pymongo import MongoClient
 from sklearn.cluster import DBSCAN
+from sklearn.neighbors import KernelDensity
 
 app = Flask(__name__)
 
@@ -236,7 +238,7 @@ severity_mapping_inverse = {
 
 @app.route('/')
 def index():
-    return render_template('loginpage.html')
+    return render_template('homepage.html')
 
 
 @app.route('/home_page')
@@ -244,31 +246,35 @@ def home_page():
     return render_template('homepage.html')
 
 
+
 @app.route('/prediction_page', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        # Get values from the form
+        # Capture the district input as a raw string
+        district_input = request.form['District']
+
+        # Get values from the form (other inputs remain unchanged)
         input_values = [
             month_mapping[request.form['month']],
             Hour_mapping[request.form['Hour of the day']],
             day_of_the_week_mapping[request.form['Day of the week']],
-            dropdown_mapping[request.form['District']],  # Map dropdown value to numeric
+            dropdown_mapping[district_input],  # Continue mapping for your model
             Weather_condition_mapping[request.form['Weather conditions']],
             Light_condition_mapping[request.form['Light conditions']],
         ]
 
         # Make predictions
         predictions = best_model.predict([input_values])
-        print(input_values)
-        print(predictions)
+        print("District Input (Raw):", district_input)
+        print("Mapped Input Values:", input_values)
+        print("Predictions:", predictions)
         prediction_2 = road_type_prediction()
 
-        return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]])
+        # Pass the raw district string and predictions to the template
+        return render_template('aaa.html', district=district_input,
+                               predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]])
 
-    return render_template('aaa.html', predictions=None)
-
-
-
+    return render_template('aaa.html', predictions=None, district=None)
 
 
 def road_type_prediction():
