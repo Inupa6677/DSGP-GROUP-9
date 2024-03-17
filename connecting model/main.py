@@ -245,47 +245,46 @@ def home_page():
 @app.route('/prediction_page', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        # Capture the district input as a raw string
-        district_input = request.form['District']
-
         # Get values from the form (other inputs remain unchanged)
         input_values = [
             month_mapping[request.form['month']],
             Hour_mapping[request.form['Hour of the day']],
             day_of_the_week_mapping[request.form['Day of the week']],
-            dropdown_mapping[district_input],  # Continue mapping for your model
+            dropdown_mapping[request.form['District']],  # Continue mapping for your model
             Weather_condition_mapping[request.form['Weather conditions']],
             Light_condition_mapping[request.form['Light conditions']],
         ]
 
         # Make predictions
         predictions = best_model.predict([input_values])
-        print("District Input (Raw):", district_input)
         print("Mapped Input Values:", input_values)
-        print("Predictions:", predictions)
-        prediction_2 = road_type_prediction()
+
+        # Pass the form data to road_type_prediction
+        prediction_2 = road_type_prediction(request.form['Weather conditions'], request.form['Light conditions'])
 
         # Pass the raw district string and predictions to the template
-        return render_template('aaa.html', district=district_input,
-                               predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]])
+        return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]])
 
     return render_template('aaa.html', predictions=None, district=None)
 
 
-def road_type_prediction():
-    if request.method == 'POST':
-        road_type = 3
-        accident_severity = 3
-        input_data = [Weather_condition_mapping[request.form['Weather conditions']],
-                      Light_condition_mapping[request.form['Light conditions']],
-                      road_type, accident_severity
-                      ]
+def road_type_prediction(weather_condition, light_condition):
+    road_type = 3
+    accident_severity = 3
+    input_data = [
+        Weather_condition_mapping[weather_condition],
+        Light_condition_mapping[light_condition],
+        road_type,
+        accident_severity
+    ]
 
-        # Make prediction using the new model
-        prediction = loaded_model.predict([input_data])
-        print(prediction)
+    # Make prediction using the new model
+    prediction = loaded_model.predict([input_data])
+    print(prediction)
 
-        return prediction
+    return prediction
+
+
 
 
 @app.route('/new_page', methods=['GET', 'POST'])
