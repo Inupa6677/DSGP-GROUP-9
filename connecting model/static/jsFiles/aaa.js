@@ -1,11 +1,6 @@
-// Assuming this JavaScript is in the same context as your iframe
-function focusMapOnDistrict() {
-    var selectElement = document.getElementById("district-dropdown");
-    var selectedDistrict = selectElement.value;
-
-    // District coordinates
-    var districts = {
-        "Kensington and Chelsea": [51.50379515, -0.20078938323179596],
+// Define your districts object with coordinates
+var districts = {
+    "Kensington and Chelsea": [51.50379515, -0.20078938323179596],
          "Hammersmith and Fulham": [51.498314199999996, -0.22787818358222445],
                 "Westminster": [51.5004439, -0.1265398],
                 "City of London": [51.5156177, -0.0919983],
@@ -421,15 +416,34 @@ function focusMapOnDistrict() {
                 "South Ayrshire" : [55.458565, -4.629179],
                 "Dumfries and Galloway" : [55.07010730,-3.60525810],
                 "Cheshire East" : [53.1670,-2.3625 ],
-    };
+};
 
-    var selectedCoordinates = districts[selectedDistrict];
 
-    // Get the iframe
-    var iframe = document.getElementById("mapIframe");
-
-    // Post message to the iframe
-    iframe.contentWindow.postMessage(selectedCoordinates, "*"); // Replace "*" with your iframe's origin for security
+function passCoordinatesToMap(coordinates) {
+    // Post message to map.js with the coordinates
+    window.postMessage({ type: 'coordinates', data: coordinates }, '*');
 }
+
+function getCoordinates() {
+    var selectedDistrict = document.getElementById('district-dropdown').value;
+    var coordinates = districts[selectedDistrict];
+    if (coordinates) {
+        alert("Coordinates for " + selectedDistrict + ": " + coordinates);
+        // Pass the coordinates to map.js
+        passCoordinatesToMap(coordinates);
+    } else {
+        console.log("Coordinates not found for " + selectedDistrict);
+    }
+}
+
+// Event listener for dropdown change
+document.getElementById('district-dropdown').addEventListener('change', getCoordinates);
+
+
+
+
+
+
+
 
 
