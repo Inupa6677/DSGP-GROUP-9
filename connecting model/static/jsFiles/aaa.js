@@ -1,7 +1,12 @@
+// Assuming this JavaScript is in the same context as your iframe
+function focusMapOnDistrict() {
+    var selectElement = document.getElementById("district-dropdown");
+    var selectedDistrict = selectElement.value;
 
-var districtCoordinates = {
-                "Kensington and Chelsea": [51.50379515, -0.20078938323179596],
-                "Hammersmith and Fulham": [51.498314199999996, -0.22787818358222445],
+    // District coordinates
+    var districts = {
+        "Kensington and Chelsea": [51.50379515, -0.20078938323179596],
+         "Hammersmith and Fulham": [51.498314199999996, -0.22787818358222445],
                 "Westminster": [51.5004439, -0.1265398],
                 "City of London": [51.5156177, -0.0919983],
                 "Tower Hamlets": [51.1288633, 1.2986686],
@@ -418,26 +423,13 @@ var districtCoordinates = {
                 "Cheshire East" : [53.1670,-2.3625 ],
     };
 
-// Function to focus the map on the selected district
-function focusDistrict(districtName) {
-    // Get the iframe element
-    var iframe = document.getElementById('mapIframe');
-    // Get the content window of the iframe
-    var iframeWindow = iframe.contentWindow;
+    var selectedCoordinates = districts[selectedDistrict];
 
-    // Check if the content window and the function to focus the map exist
-    if (iframeWindow && iframeWindow.focusMapOnDistrict) {
-        // Call the function inside the iframe to focus the map on the selected district
-        iframeWindow.focusMapOnDistrict(districtName);
-    } else {
-        console.error("Map iframe or focusMapOnDistrict function not found.");
-    }
+    // Get the iframe
+    var iframe = document.getElementById("mapIframe");
+
+    // Post message to the iframe
+    iframe.contentWindow.postMessage(selectedCoordinates, "*"); // Replace "*" with your iframe's origin for security
 }
 
-// Example usage:
-// Assuming you have a form with a select element for district selection
-var districtSelect = document.getElementById("districtSelect");
-districtSelect.addEventListener("change", function() {
-    var selectedDistrict = districtSelect.value;
-    focusDistrict(selectedDistrict);
-});
+
