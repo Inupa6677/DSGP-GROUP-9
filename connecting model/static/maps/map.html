@@ -35,64 +35,32 @@
                 .leaflet-container { font-size: 1rem; }
             </style>
         
-    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>\
-
-
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
 </head>
 <body>
     
     
             <div class="folium-map" id="map_6e83edfb4ac1d51db68b2448762ecd8e" ></div>
-
         
 </body>
 <script>
-    // Retrieve latitude and longitude from localStorage
-    var storedLatitude = localStorage.getItem('latitude');
-    var storedLongitude = localStorage.getItem('longitude');
-
-    // Alert to check the stored latitude and longitude
-    alert("Stored Latitude: " + storedLatitude);
-    alert("Stored Longitude: " + storedLongitude);
-
-    var latitude = parseFloat(storedLatitude);
-    var longitude = parseFloat(storedLongitude);
-
-    // Alert to check the parsed latitude and longitude
-    alert("Parsed Latitude: " + latitude);
-    alert("Parsed Longitude: " + longitude);
-
-    var isValidLatitude = !isNaN(latitude) && latitude !== null;
-    var isValidLongitude = !isNaN(longitude) && longitude !== null;
-
-    // Alert to check if latitude and longitude are valid
-    alert("IsValidLatitude: " + isValidLatitude);
-    alert("IsValidLongitude: " + isValidLongitude);
-
-    // Use the stored coordinates if valid, otherwise fall back to default values
-    var centerLatitude = isValidLatitude ? latitude : 51.2800275;
-    var centerLongitude = isValidLongitude ? longitude : 1.0802533;
-
-    // Alert to check the center coordinates
-    alert("Center Latitude: " + centerLatitude);
-    alert("Center Longitude: " + centerLongitude);
-
-    // Initialize the Leaflet map with the retrieved or default coordinates
-    var map_6e83edfb4ac1d51db68b2448762ecd8e = L.map("map_6e83edfb4ac1d51db68b2448762ecd8e", {
-        center: [centerLatitude, centerLongitude],
-        crs: L.CRS.EPSG3857,
-        zoom: 10,
-        zoomControl: true,
-        preferCanvas: false,
-    });
-</script>
-
-<script>
-
     
+    
+            var map_6e83edfb4ac1d51db68b2448762ecd8e = L.map(
+                "map_6e83edfb4ac1d51db68b2448762ecd8e",
+                {
+                    center: [52.5515884326, -1.4591268169],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
 
+            
 
-
+        
+    
             var tile_layer_7ac6c5f2ea720d960bbb5447f2cf8dac = L.tileLayer(
                 "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
