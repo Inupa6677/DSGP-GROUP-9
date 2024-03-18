@@ -44,18 +44,35 @@
         
 </body>
 <script>
+    var map_6e83edfb4ac1d51db68b2448762ecd8e = L.map(
+        "map_6e83edfb4ac1d51db68b2448762ecd8e", {
+            crs: L.CRS.EPSG3857,
+            zoom: 10,
+            zoomControl: true,
+            preferCanvas: false,
+        }
+    );
+
+    // Function to update map center dynamically
+    function updateMapCenter(latitude, longitude) {
+        map_6e83edfb4ac1d51db68b2448762ecd8e.setView([latitude, longitude], 10);
+    }
+
+    // Test with latitude and longitude coordinates
+    // You can pass latitude and longitude coordinates to test
+
+    var latitude = 53.228666;
+    var longitude = -1.2912756;
+
+    setTimeout(function() {
+        updateMapCenter(latitude, longitude); // Example coordinates
+    }, 2000); // 2 seconds delay
+</script>
+
+<script>
     
     
-            var map_6e83edfb4ac1d51db68b2448762ecd8e = L.map(
-                "map_6e83edfb4ac1d51db68b2448762ecd8e",
-                {
-                    center: [52.5515884326, -1.4591268169],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 10,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
+
 
             
 
