@@ -1,4 +1,5 @@
 // Define your districts object with coordinates
+
 var districts = {
     "Kensington and Chelsea": [51.50379515, -0.20078938323179596],
          "Hammersmith and Fulham": [51.498314199999996, -0.22787818358222445],
@@ -458,7 +459,13 @@ window.onload = function() {
         console.log('Received confirmation from server:', data);
         // You can add further logic here if needed
     };
+
 };
+
+//var parentData = {{data|tojson}};
+
+
+
 
 
 

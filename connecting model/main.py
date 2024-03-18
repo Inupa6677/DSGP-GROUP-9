@@ -662,17 +662,19 @@ def home_page():
     return render_template('homepage.html')
 
 
+# Route to send coordinates as Server-Sent Events (SSE)
+coordinates = ""
 
 
 @app.route('/update_coordinates', methods=['POST'])
 def update_coordinates():
     data = request.get_json()
+    global coordinates
     coordinates = data.get('coordinates')
 
     # Log received coordinates
     print('Received coordinates:', coordinates)
 
-    # Send a JSON response back to the client to confirm receipt of coordinates
     response_data = {'status': 'success', 'message': 'Coordinates received successfully'}
     return jsonify(response_data)
 
@@ -697,9 +699,10 @@ def home():
         # Pass the form data to road_type_prediction
         prediction_2 = road_type_prediction(request.form['Weather conditions'], request.form['Light conditions'])
 
-        # Pass the raw district string and predictions to the template
-        return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]])
+        global coordinates
 
+        # Pass the raw district string and predictions to the template
+        return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]], data=coordinates)
     return render_template('aaa.html', predictions=None, district=None)
 
 

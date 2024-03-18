@@ -44,6 +44,20 @@
         
 </body>
 <script>
+    function getParentData() {
+
+        try {
+            return window.parent.parentData;
+        } catch (e) {
+            console.error("Error accessing parent data:", e);
+            return null;
+        }
+    }
+
+    var coordinatesArray = getParentData();
+    console.log(coordinatesArray)
+
+
     var map_6e83edfb4ac1d51db68b2448762ecd8e = L.map(
         "map_6e83edfb4ac1d51db68b2448762ecd8e", {
             crs: L.CRS.EPSG3857,
@@ -61,8 +75,8 @@
     // Test with latitude and longitude coordinates
     // You can pass latitude and longitude coordinates to test
 
-    var latitude = 53.228666;
-    var longitude = -1.2912756;
+    var latitude = 52.5515884326;
+    var longitude = -1.4591268169;
 
     setTimeout(function() {
         updateMapCenter(latitude, longitude); // Example coordinates
