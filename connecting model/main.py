@@ -1,6 +1,6 @@
 import json
 from datetime import time
-
+import gzip
 from flask import Flask, render_template, request, jsonify, Response
 import pickle
 
@@ -425,6 +425,17 @@ districts = {
     "Cheshire East": [53.1670, -2.3625],
 }
 
+MODEL_FILENAME = 'best_random_forest_model_zip.pkl.gz'
+
+
+def load_model(filename):
+    with gzip.open(filename, 'rb') as f:
+        model = pickle.load(f)
+    return model
+
+
+model = load_model(MODEL_FILENAME)
+
 # Load  prediction models
 with open('countpredictionDTlastFinal.pkl', 'rb') as file:
     best_model = pickle.load(file)
@@ -693,7 +704,7 @@ def home():
         ]
 
         # Make predictions
-        predictions = best_model.predict([input_values])
+        predictions = model.predict([input_values])
         print("Mapped Input Values:", input_values)
 
         # Pass the form data to road_type_prediction
@@ -702,7 +713,8 @@ def home():
         global coordinates
 
         # Pass the raw district string and predictions to the template
-        return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]], data=coordinates)
+        return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]],
+                               data=coordinates)
     return render_template('aaa.html', predictions=None, district=None)
 
 

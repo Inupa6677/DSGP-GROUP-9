@@ -462,6 +462,34 @@ window.onload = function() {
 
 };
 
+$(document).ready(function() {
+    clearDefaultValues();
+    // Initialize Select2 for the Month dropdown
+    $('#month-dropdown').select2();
+    // Repeat for other specific dropdowns by ID
+    $('#hour-dropdown').select2(); // Assuming you've given an ID to the "Hour of the day" dropdown
+    $('#day-dropdown').select2(); // Assuming you've given an ID to the "Day of the week" dropdown
+    $('#district-dropdown').select2(); // Already has an ID in your given form
+    $('#weather_conditions_id').select2(); // This one too
+    $('#light_conditions_id').select2(); // And this one
+
+    // Clear default values when the page is refreshed
+    $(window).on('beforeunload', function() {
+        clearDefaultValues();
+    });
+});
+
+function clearDefaultValues() {
+    // Assuming the default values are set using the "value" attribute
+    $('input[type="text"], textarea, select').val('');
+
+    // If you have specific default values to clear, you can target them individually
+    // Example:
+    // $('#input-id').val('');
+}
+
+
+
 //var parentData = {{data|tojson}};
 
 
