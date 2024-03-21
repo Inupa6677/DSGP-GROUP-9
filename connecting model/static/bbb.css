@@ -19,8 +19,7 @@ nav img {
     width: auto;
     height: auto;
     max-width: 200px;
-    max-height: 80px;
-    padding: 5px;
+    max-height: 80
 }
 
 .nav-links {
@@ -64,16 +63,6 @@ nav img {
     color: #FC6736;
 }
 
-
-/* Header Styles */
-.header {
-    min-height: 100vh;
-    width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../image/bg.png);
-    background-position: center;
-    background-size: cover;
-    position: relative;
-}
 
 /* Main Content Styles */
 .container {
@@ -135,3 +124,10 @@ form button:hover {
 #accident-severity {
     margin-top: 100px; /* Adjust the margin-top value as needed */
 }
+
+
+/* Navigation Styles */
+
+
+
+

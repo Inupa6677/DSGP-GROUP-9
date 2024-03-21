@@ -11,8 +11,16 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='aaa.css') }}">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        .background-image {
+            background-image: url("{{ url_for('static', filename='image/bg.png') }}");
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+    </style>
 </head>
-<body>
+<body class="background-image">
     <div class="bg">
         <nav>
            <img src="{{ url_for('static', filename='image/logo.png') }}" class="logo">
@@ -555,10 +563,7 @@
                 <p id="road-type-text">{{ predictions [1] }}</p>
             </div>
             <!-- severity box container -->
-            <div id="new-box" style="margin-top: 20px;">
-                <h2>Check Accident Severity</h2>
-                <button id="new-page-button">Click to Check Accident Severity</button>
-            </div>
+
         </div>
     </div>
 

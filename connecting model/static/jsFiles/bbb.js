@@ -1,23 +1,23 @@
 $(document).ready(function() {
     // Initialize Select2 for all dropdowns with search functionality
     $('#numberOfVehicles').select2({
-        placeholder: "Select number of vehicles",
+        placeholder: " ",
         allowClear: true
     });
     $('#NumberOfCasualties').select2({
-        placeholder: "Select number of casualties",
+        placeholder: " ",
         allowClear: true
     });
     $('#WeatherConditions').select2({
-        placeholder: "Select weather conditions",
+        placeholder: " ",
         allowClear: true
     });
     $('#RoadSurfaceConditions').select2({
-        placeholder: "Select road surface conditions",
+        placeholder: " ",
         allowClear: true
     });
     $('#light_conditions_id').select2({
-        placeholder: "Select light conditions",
+        placeholder: " ",
         allowClear: true
     });
     clearDefaultValues();

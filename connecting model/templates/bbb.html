@@ -6,22 +6,27 @@
     <title>New Page</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bbb.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <style>
+        .background-image {
+            background-image: url("{{ url_for('static', filename='image/bg.png') }}");
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+    </style>
 </head>
-<body>
-    <div class="bg">
-        <nav>
-           <img src="{{ url_for('static', filename='image/logo.png') }}" class="logo">
-           <div class="nav-links">
+<body class="background-image">
+    <nav>
+        <img src="{{ url_for('static', filename='image/logo.png') }}" class="logo">
+        <div class="nav-links">
             <ul>
                 <li><a href="/home_page">HOME</a></li>
                 <li><a href="/prediction_page">PREDICTION</a></li>
                 <li><a href="/new_page">SEVERITY</a></li>
                 <li><a href="#">ANALYSIS</a></li>
-
             </ul>
-           </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
     <h1 id="accident-severity">Accident severity prediction</h1>
 
     <form id="prediction-form" method="post" action="/new_page">
@@ -44,7 +49,6 @@
             <option value="Raining no high winds">Raining no high winds</option>
             <option value="Snowing no high winds">Snowing no high winds</option>
             <option value="Other">Other</option>
-
         </select><br>
 
         <label for="Road_Surface_Conditions">Road Surface Conditions:</label>
@@ -52,7 +56,6 @@
             <option value="Dry">Dry</option>
             <option value=" Wet or damp"> Wet or damp</option>
             <option value="Frost or ice">Frost or ice</option>
-
         </select><br>
 
         <label for="Light conditions">Light conditions:</label>
