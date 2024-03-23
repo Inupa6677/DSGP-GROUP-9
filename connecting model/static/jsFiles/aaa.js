@@ -448,19 +448,7 @@ function focusMapOnDistrict() {
     sendCoordinatesToServer(coordinates);
 }
 
-// This is optional, but good for initialization
-window.onload = function() {
-    focusMapOnDistrict(); // To focus the map on the initial selection
 
-    // Listen for messages from the server
-    var eventSource = new EventSource('/update_coordinates');
-    eventSource.onmessage = function(event) {
-        var data = JSON.parse(event.data);
-        console.log('Received confirmation from server:', data);
-        // You can add further logic here if needed
-    };
-
-};
 
 $(document).ready(function() {
     clearDefaultValues();
@@ -488,9 +476,6 @@ function clearDefaultValues() {
     // $('#input-id').val('');
 }
 
-
-
-//var parentData = {{data|tojson}};
 
 
 

@@ -1,6 +1,7 @@
 import json
 from datetime import time
 import gzip
+
 from flask import Flask, render_template, request, jsonify, Response
 import pickle
 
@@ -680,14 +681,33 @@ coordinates = ""
 @app.route('/update_coordinates', methods=['POST'])
 def update_coordinates():
     data = request.get_json()
-    global coordinates
     coordinates = data.get('coordinates')
-
     # Log received coordinates
     print('Received coordinates:', coordinates)
 
+    # Store the coordinates in a global variable or a data structure
+    # (e.g., a queue or a list) for later retrieval
+    global latest_coordinates
+    latest_coordinates = coordinates
+
     response_data = {'status': 'success', 'message': 'Coordinates received successfully'}
     return jsonify(response_data)
+
+
+@app.route('/coordinates', methods=['GET'])
+def get_coordinates():
+    def stream_coordinates():
+        # Wait until new coordinates are available
+        global latest_coordinates
+        while True:
+            if latest_coordinates:
+                coordinates = latest_coordinates
+                latest_coordinates = None
+                yield 'data: {}\n\n'.format(str(coordinates))
+            else:
+                time.sleep(0.1)  # Reduce CPU usage by introducing a small delay
+
+    return Response(stream_coordinates(), mimetype="text/event-stream")
 
 
 @app.route('/prediction_page', methods=['GET', 'POST'])

@@ -44,44 +44,53 @@
         
 </body>
 <script>
-    function getParentData() {
-
-        try {
-            return window.parent.parentData;
-        } catch (e) {
-            console.error("Error accessing parent data:", e);
-            return null;
+        function getParentData() {
+            try {
+                return window.parent.parentData;
+            } catch (e) {
+                console.error("Error accessing parent data:", e);
+                return null;
+            }
         }
-    }
 
-    var coordinatesArray = getParentData();
-    console.log(coordinatesArray)
+        var coordinatesArray = getParentData();
+        console.log(coordinatesArray);
 
+        var map_6e83edfb4ac1d51db68b2448762ecd8e = L.map(
+            "map_6e83edfb4ac1d51db68b2448762ecd8e", {
+                crs: L.CRS.EPSG3857,
+                zoom: 10,
+                zoomControl: true,
+                preferCanvas: false,
+            }
+        );
 
-    var map_6e83edfb4ac1d51db68b2448762ecd8e = L.map(
-        "map_6e83edfb4ac1d51db68b2448762ecd8e", {
-            crs: L.CRS.EPSG3857,
-            zoom: 10,
-            zoomControl: true,
-            preferCanvas: false,
+        // Function to update map center dynamically
+        function updateMapCenter(latitude, longitude) {
+            map_6e83edfb4ac1d51db68b2448762ecd8e.setView([latitude, longitude], 10);
         }
-    );
 
-    // Function to update map center dynamically
-    function updateMapCenter(latitude, longitude) {
-        map_6e83edfb4ac1d51db68b2448762ecd8e.setView([latitude, longitude], 10);
-    }
+        // Test with latitude and longitude coordinates
+        // You can pass latitude and longitude coordinates to test
+        var latitude = 52.5515884326;
+        var longitude = -1.4591268169;
+        setTimeout(function() {
+            updateMapCenter(latitude, longitude); // Example coordinates
+        }, 2000); // 2 seconds delay
 
-    // Test with latitude and longitude coordinates
-    // You can pass latitude and longitude coordinates to test
+        // Set up the EventSource for Long Polling
+        var eventSource = new EventSource("/coordinates");
+        eventSource.onmessage = function(event) {
+            var coordinates = JSON.parse(event.data);
+            var latitude = coordinates[0];
+            var longitude = coordinates[1];
+            updateMapCenter(latitude, longitude);
 
-    var latitude = 52.5515884326;
-    var longitude = -1.4591268169;
-
-    setTimeout(function() {
-        updateMapCenter(latitude, longitude); // Example coordinates
-    }, 2000); // 2 seconds delay
-</script>
+            // Add the coordinates to the heatmap
+            var latlng = [latitude, longitude];
+            heat.addLatLng(latlng);
+        };
+    </script>
 
 <script>
     
