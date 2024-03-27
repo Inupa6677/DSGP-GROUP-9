@@ -430,7 +430,7 @@ function sendCoordinatesToServer(coordinates) {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-        alert('Coordinates sent to server: ' + coordinates); // Alert to confirm successful sending
+        //alert('Coordinates sent to server: ' + coordinates); // Alert to confirm successful sending
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -442,7 +442,7 @@ function focusMapOnDistrict() {
     var coordinates = districts[selectedDistrict];
 
     // Display an alert to confirm the coordinates
-    alert('Coordinates for ' + selectedDistrict + ': ' + coordinates);
+    //alert('Coordinates for ' + selectedDistrict + ': ' + coordinates);
 
     // Send the coordinates to the Flask server
     sendCoordinatesToServer(coordinates);

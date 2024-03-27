@@ -627,6 +627,11 @@ Number_of_vehicle_mapping = {
     '3': 3,
     '4': 4,
     '5': 5,
+    '6': 6,
+    '7': 7,
+    '8': 8,
+    '9': 9,
+
 }
 
 Number_of_Casualties_mapping = {
@@ -635,13 +640,38 @@ Number_of_Casualties_mapping = {
     '3': 3,
     '4': 4,
     '5': 5,
+    '6': 6,
+    '7': 7,
+    '8': 8,
+    '9': 9,
+    '10': 10,
+    '11': 11,
+    '12': 12,
+    '13': 13,
+    '14': 14,
+    '15': 15,
+    '16': 16,
+    '17': 17,
+    '18': 18,
+    '19': 19,
+    '20': 20,
+    '21': 21,
+    '22': 22,
+    '23': 23,
+    '24': 24,
+    '25': 25,
+
 }
 
 Weather_condition_for_severity_mapping = {
     'Raining no high winds': 2,
     'Fine no high winds': 1,
     'Snowing no high winds': 3,
-    'Other': 8,
+    'fine + high winds': 4,
+    'raining + high winds': 5,
+    'snowing + high winds': 6,
+    'fog or mist': 7,
+
 }
 
 Light_condition_for_severity_mapping = {
@@ -649,12 +679,14 @@ Light_condition_for_severity_mapping = {
     'Darkness - lights lit': 4,
     'Darkness - lighting unknown': 7,
     'Darkness - no lighting': 6,
+    'Darkness - lights unlit': 5,
 }
 
 road_condition_mapping_severity = {
     'Wet or damp': 2,
     'Dry': 1,
-    'Frost or ice': 3,
+    'snow': 3,
+    'Frost or Ice': 4,
 }
 
 severity_mapping_inverse = {
@@ -666,7 +698,7 @@ severity_mapping_inverse = {
 
 @app.route('/')
 def index():
-    return render_template('loginpage.html')
+    return render_template('homepage.html')
 
 
 @app.route('/home_page')
@@ -674,7 +706,6 @@ def home_page():
     return render_template('homepage.html')
 
 
-# Route to send coordinates as Server-Sent Events (SSE)
 coordinates = ""
 
 
@@ -770,7 +801,7 @@ def new_page():
         # Make predictions
         predictions_severity = severity_model.predict([input_values_severity])
 
-        return render_template('bbb.html', predictions=predictions_severity)
+        return render_template('bbb.html', predictions=severity_mapping_inverse[predictions_severity[0]])
 
     return render_template('bbb.html', predictions=None)
 
