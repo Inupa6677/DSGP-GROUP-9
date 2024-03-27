@@ -666,7 +666,7 @@ severity_mapping_inverse = {
 
 @app.route('/')
 def index():
-    return render_template('homepage.html')
+    return render_template('loginpage.html')
 
 
 @app.route('/home_page')
