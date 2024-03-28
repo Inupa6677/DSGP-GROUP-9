@@ -149,3 +149,72 @@ nav img{
     border-radius: 5px;
     background: #f2f2f2;
   }
+  /* -------------------------------------------- */
+  .analysis{
+    width: auto;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+  .row{
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .row1{
+    display: flex;
+    justify-content:space-between;
+  }
+  .col{
+    flex-basis: 30%;
+    background: #efecec;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 30px 30px;
+    box-sizing: border-box;
+  } 
+  .col1{
+    flex-basis: 30%;
+    background-image:linear-gradient(rgba(235, 227, 227, 0.925),rgba(255, 255, 255, 0.664)),url(../image/analysis.png);
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 30px 30px;
+    box-sizing: border-box;
+  } 
+  .piechart{
+    width: 800px;
+    height: 500px;
+  }
+  .curve_chart{
+    width: 1200px;
+    height: 800px;
+  }
+  h2{
+    color: #0C2D57;
+    font-size: 55px;
+    font-family: "Inter", sans-serif;
+  }
+  h3{
+    color: #000000;
+    font-size: 40px;
+    font-family: "Inter", sans-serif;
+    margin-top: 50px;
+  }
+  h4{
+    color: #ff0000;
+    font-size: 45px;
+    font-family: "Inter", sans-serif;
+    /* margin-top: 200px; */
+  }
+  h1{
+    color: #ff6600;
+    font-size: 60px;
+    font-family: "Inter", sans-serif;
+    margin-top: 100px;
+  }
+  p{
+    color: #000000;
+    font-size: 30px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 30px;
+  }
