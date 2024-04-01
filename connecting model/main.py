@@ -701,6 +701,11 @@ def index():
     return render_template('loginpage.html')
 
 
+@app.route('/analysis_page')
+def analysis():
+    return render_template('analystpage.html')
+
+
 @app.route('/home_page')
 def home_page():
     return render_template('homepage.html')
