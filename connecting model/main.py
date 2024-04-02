@@ -438,8 +438,7 @@ def load_model(filename):
 model = load_model(MODEL_FILENAME)
 
 # Load  prediction models
-with open('countpredictionDTlastFinal.pkl', 'rb') as file:
-    best_model = pickle.load(file)
+
 
 with open('road_surface_model.pkl', 'rb') as file:
     loaded_model = pickle.load(file)
@@ -605,6 +604,14 @@ Weather_condition_mapping = {
     'Snowing + high winds': 5,
 }
 
+Road_type_mapping = {
+    'Dual carriageway': 0,
+    'Single carriageway': 3,
+    'One way street': 1,
+    'Roundabout': 2,
+    'Slip road': 4,
+}
+
 Light_condition_mapping = {
     'Daylight': 4,
     'Darkness - lights lit': 1,
@@ -761,26 +768,29 @@ def home():
 
         # Make predictions
         predictions = model.predict([input_values])
+        import numpy as np
+
+        # Assuming `predictions` is a NumPy array containing the predicted values
+        rounded_predictions = np.round(predictions)
         print("Mapped Input Values:", input_values)
 
         # Pass the form data to road_type_prediction
-        prediction_2 = road_type_prediction(request.form['Weather conditions'], request.form['Light conditions'])
+        prediction_2 = road_type_prediction(request.form['Weather conditions'], request.form['Light conditions'], request.form['Road Type'])
 
         global coordinates
 
         # Pass the raw district string and predictions to the template
-        return render_template('aaa.html', predictions=[predictions, road_condition_mapping_inverse[prediction_2[0]]],
+        return render_template('aaa.html', predictions=[rounded_predictions, road_condition_mapping_inverse[prediction_2[0]]],
                                data=coordinates)
     return render_template('aaa.html', predictions=None, district=None)
 
 
-def road_type_prediction(weather_condition, light_condition):
-    road_type = 3
+def road_type_prediction(weather_condition, light_condition, road_type):
     accident_severity = 3
     input_data = [
         Weather_condition_mapping[weather_condition],
         Light_condition_mapping[light_condition],
-        road_type,
+        Road_type_mapping[road_type],
         accident_severity
     ]
 
