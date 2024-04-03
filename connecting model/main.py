@@ -1,12 +1,15 @@
 import json
+# import libraries
 from datetime import time
 import gzip
 
 from flask import Flask, render_template, request, jsonify, Response
 import pickle
 
+# starting the flask server
 app = Flask(__name__)
 
+# setting the flask server
 districts = {
     "Kensington and Chelsea": [51.50379515, -0.20078938323179596],
     "Hammersmith and Fulham": [51.498314199999996, -0.22787818358222445],
@@ -426,9 +429,11 @@ districts = {
     "Cheshire East": [53.1670, -2.3625],
 }
 
+# taking the zipped model
 MODEL_FILENAME = 'best_random_forest_model_zip.pkl.gz'
 
 
+# unzip the model
 def load_model(filename):
     with gzip.open(filename, 'rb') as f:
         model = pickle.load(f)
@@ -439,7 +444,6 @@ model = load_model(MODEL_FILENAME)
 
 # Load  prediction models
 
-
 with open('road_surface_model.pkl', 'rb') as file:
     loaded_model = pickle.load(file)
 
@@ -447,7 +451,7 @@ with open('road_surface_model.pkl', 'rb') as file:
 with open('accident_severity_model.pkl', 'rb') as f:
     severity_model = pickle.load(f)
 
-# Mapping for dropdown options to numeric values
+# Mapping for dropdown district options to numeric values
 
 dropdown_mapping = {'Kensington and Chelsea': 182, 'Hammersmith and Fulham': 155, 'Westminster': 398,
                     'City of London': 79, 'Tower Hamlets': 366, 'Southwark': 327, 'Hackney': 152, 'Islington': 180,
@@ -542,6 +546,7 @@ dropdown_mapping = {'Kensington and Chelsea': 182, 'Hammersmith and Fulham': 155
                     'Cornwall': 86, 'Wiltshire': 401,
                     }
 
+# mapping months
 month_mapping = {
     'January': 1,
     'February': 2,
@@ -557,6 +562,7 @@ month_mapping = {
     'December': 12,
 }
 
+# mapping hours
 Hour_mapping = {
     '1': 0,
     '2': 1,
@@ -584,6 +590,7 @@ Hour_mapping = {
     '24': 23,
 }
 
+# mapping days of the week
 day_of_the_week_mapping = {
     'Friday': 0,
     'Monday': 1,
@@ -594,6 +601,7 @@ day_of_the_week_mapping = {
     'Wednesday': 6,
 }
 
+# mapping weather conditions
 Weather_condition_mapping = {
     'Raining no high winds': 4,
     'Fine no high winds': 1,
@@ -604,6 +612,7 @@ Weather_condition_mapping = {
     'Snowing + high winds': 5,
 }
 
+# mapping road types
 Road_type_mapping = {
     'Dual carriageway': 0,
     'Single carriageway': 3,
@@ -612,6 +621,7 @@ Road_type_mapping = {
     'Slip road': 4,
 }
 
+# mapping light conditions
 Light_condition_mapping = {
     'Daylight': 4,
     'Darkness - lights lit': 1,
@@ -619,7 +629,7 @@ Light_condition_mapping = {
     'Darkness - lights unlit': 2,
     'Darkness - no lighting': 3,
 }
-
+# road condition mapping inverse
 road_condition_mapping_inverse = {
     4: 'Wet or damp',
     0: ' Dry',
@@ -627,7 +637,7 @@ road_condition_mapping_inverse = {
     3: 'Snow',
     1: 'Flood over 3cm. deep',
 }
-
+# number of vehicles mapping
 Number_of_vehicle_mapping = {
     '1': 1,
     '2': 2,
@@ -641,6 +651,7 @@ Number_of_vehicle_mapping = {
 
 }
 
+# number of Casualties mapping
 Number_of_Casualties_mapping = {
     '1': 1,
     '2': 2,
@@ -703,6 +714,7 @@ severity_mapping_inverse = {
 }
 
 
+# setting the paths for the webpages
 @app.route('/')
 def index():
     return render_template('loginpage.html')
@@ -721,6 +733,7 @@ def home_page():
 coordinates = ""
 
 
+# code for updating coordinates realtime and focus in the map
 @app.route('/update_coordinates', methods=['POST'])
 def update_coordinates():
     data = request.get_json()
@@ -729,7 +742,6 @@ def update_coordinates():
     print('Received coordinates:', coordinates)
 
     # Store the coordinates in a global variable or a data structure
-    # (e.g., a queue or a list) for later retrieval
     global latest_coordinates
     latest_coordinates = coordinates
 
@@ -770,17 +782,18 @@ def home():
         predictions = model.predict([input_values])
         import numpy as np
 
-        # Assuming `predictions` is a NumPy array containing the predicted values
         rounded_predictions = np.round(predictions)
         print("Mapped Input Values:", input_values)
 
         # Pass the form data to road_type_prediction
-        prediction_2 = road_type_prediction(request.form['Weather conditions'], request.form['Light conditions'], request.form['Road Type'])
+        prediction_2 = road_type_prediction(request.form['Weather conditions'], request.form['Light conditions'],
+                                            request.form['Road Type'])
 
         global coordinates
 
         # Pass the raw district string and predictions to the template
-        return render_template('aaa.html', predictions=[rounded_predictions, road_condition_mapping_inverse[prediction_2[0]]],
+        return render_template('aaa.html',
+                               predictions=[rounded_predictions, road_condition_mapping_inverse[prediction_2[0]]],
                                data=coordinates)
     return render_template('aaa.html', predictions=None, district=None)
 

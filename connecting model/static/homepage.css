@@ -140,7 +140,6 @@ button:hover{
     font-size: 18px;
     line-height: 1.6;
     text-align: center;
-    font-family: 'Montserrat', sans-serif; /* Change to the desired font */
-    /* Add any additional styling you want here */
+    font-family: 'Montserrat', sans-serif;
 }
 

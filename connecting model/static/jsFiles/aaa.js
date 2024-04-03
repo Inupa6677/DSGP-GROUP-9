@@ -430,7 +430,6 @@ function sendCoordinatesToServer(coordinates) {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-        //alert('Coordinates sent to server: ' + coordinates); // Alert to confirm successful sending
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -441,8 +440,6 @@ function focusMapOnDistrict() {
     var selectedDistrict = document.getElementById('district-dropdown').value;
     var coordinates = districts[selectedDistrict];
 
-    // Display an alert to confirm the coordinates
-    //alert('Coordinates for ' + selectedDistrict + ': ' + coordinates);
 
     // Send the coordinates to the Flask server
     sendCoordinatesToServer(coordinates);
@@ -454,12 +451,11 @@ $(document).ready(function() {
     clearDefaultValues();
     // Initialize Select2 for the Month dropdown
     $('#month-dropdown').select2();
-    // Repeat for other specific dropdowns by ID
     $('#hour-dropdown').select2();
     $('#day-dropdown').select2();
-    $('#district-dropdown').select2(); // Already has an ID in your given form
-    $('#weather_conditions_id').select2(); // This one too
-    $('#light_conditions_id').select2(); // And this one
+    $('#district-dropdown').select2();
+    $('#weather_conditions_id').select2();
+    $('#light_conditions_id').select2();
     $('#Road_Type_id').select2();
 
     // Clear default values when the page is refreshed
@@ -472,9 +468,6 @@ function clearDefaultValues() {
     // Assuming the default values are set using the "value" attribute
     $('input[type="text"], textarea, select').val('');
 
-    // If you have specific default values to clear, you can target them individually
-    // Example:
-    // $('#input-id').val('');
 }
 
 

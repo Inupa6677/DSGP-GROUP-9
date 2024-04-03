@@ -6,7 +6,7 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Ensure it has a higher z-index */
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,12 +66,12 @@ nav img {
 
 /* Main Content Styles */
 .container {
-    margin-top: 60px; /* Ensure content does not overlap with the navbar */
+    margin-top: 60px;
 }
 
 h1 {
     text-align: center;
-    margin-top: 30px; /* Adjust as needed */
+    margin-top: 30px;
     color: white;
 }
 
@@ -123,11 +123,9 @@ form button:hover {
 }
 
 #accident-severity {
-    margin-top: 100px; /* Adjust the margin-top value as needed */
+    margin-top: 100px;
 }
 
-
-/* Navigation Styles */
 
 
 
