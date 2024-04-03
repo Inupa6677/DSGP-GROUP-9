@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css') }}">
+</head>
+<body>
+
+    <section class="header">
+
+        <nav>
+           <img src="{{ url_for('static', filename='image/logo.png') }}" class="logo">
+           <div class="nav-links">
+            <ul>
+                <li><a href="/home_page">HOME</a></li>
+                <li><a href="/prediction_page">PREDICTION</a></li>
+                <li><a href="/new_page">SEVERITY</a></li>
+                <li><a href="/analysis_page">ANALYSIS</a></li>
+
+            </ul>
+           </div>
+        </nav>
+
+        <div class="offers">
+            <h1>Empowering Safety: Our Solutions</h1>
+            <br>
+            <p id="safety-message">Embark on a journey towards safer roads with our innovative solutions. From predicting accident counts to identifying hot zones, assessing severity, and classifying road types, we offer a comprehensive suite of features to enhance road safety.</p>
+            <br>
+            <div class="row">
+                <div class="offers-col" style="margin-bottom: 30px;">
+                    <h2>Prediction</h2>
+                    <br>
+                    <p style="margin-bottom: 20px; font-size: 16px;">
+                    Unlock insights into accident counts, hot zones, and road conditions.
+                    <br><br>
+                    Discover high-risk areas and road surface conditions to enhance safety measures.
+                    </p>
+                </div>
+
+                <div class="offers-col" style="margin-bottom: 30px;">
+                    <h2>Severity</h2>
+                    <br>
+                    <p style="margin-bottom: 20px; font-size: 16px;">
+                    Explore the severity of accidents with detailed insights. Understand the impact and severity levels of incidents, empowering you to take proactive safety measures and minimize risks on the road.
+                    </p>
+                </div>
+
+                <div class="offers-col" style="margin-bottom: 30px;">
+                    <h2>Analysis</h2>
+                    <br>
+                    <p style="margin-bottom: 20px; font-size: 16px;">
+                    Explore the Analysis of accidents with detailed insights.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn">
+            <a href="/prediction_page"> <button type="button"><span></span>Prediction</button> </a>
+            <a href="/new_page"> <button type="button"><span></span>Severity</button> </a>
+            <a href="#"> <button type="button"><span></span>Analysis</button> </a>
+        </div>
+    
+    </section>
+    <script src="{{ url_for('static', filename='jsFiles/hompage.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+Accidents0514.csv filter=lfs diff=lfs merge=lfs -text
+Vehicles0514.csv filter=lfs diff=lfs merge=lfs -text
+path/to/accident_information_-_edit_-_table(1) filter=lfs diff=lfs merge=lfs -text
+C:/Users/MSI[[:space:]]KATANA/Desktop/Copy[[:space:]]of[[:space:]]accident_information_-_edit_-_table(1).xlsx filter=lfs diff=lfs merge=lfs -text
+.csv filter=lfs diff=lfs merge=lfs -text
+*.csv filter=lfs diff=lfs merge=lfs -text

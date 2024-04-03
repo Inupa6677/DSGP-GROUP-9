@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in page </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='loginpage.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="signin-signup">
+            <form action="" class="sign-in-form" id="loginForm">
+                <h2 class="title">SIGN IN</h2>
+                <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Username" id="username">
+                </div>
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" id="password">
+            </div>
+            <input type="submit" value="Login" class="btn" id="loginBtn">
+            <p class="social-text">Or Sign in with social platform</p>
+            <br>
+            <div class="social-media">
+                <a href="#" class="social-icon"> <i class="fab fa-facebook"></i> </a>
+                <a href="#" class="social-icon"> <i class="fab fa-google"></i> </a>
+                <a href="#" class="social-icon"> <i class="fab fa-github"></i> </a>
+                <a href="#" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>
+            </div>
+            <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
+            </form>
+            <form action="/signup" method="post" class="sign-up-form" id="signup-form">
+                <h2 class="title" id="signup-title"> Sign up </h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="user_name" placeholder="Username">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" id="email" placeholder="Email">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="new-password" placeholder="New Password">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirm-password" placeholder="Confirm Password">
+                </div>
+                <input type="submit" value="Sign up" class="btn">
+                <p class="social-text">Or Sign up with social platform</p>
+                <br>
+                <div class="social-media">
+                    <a href="#" class="social-icon"> <i class="fab fa-facebook"></i> </a>
+                    <a href="#" class="social-icon"> <i class="fab fa-google"></i> </a>
+                    <a href="#" class="social-icon"> <i class="fab fa-github"></i> </a>
+                    <a href="#" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>
+                </div>
+                <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign in</a></p>
+            </form>
+
+
+        </div>
+        <div class="panels-container">
+             <div class="panel left-panel">
+                    <div class="content" id="member-content">
+                        <h3> Are you already a member? </h3>
+                        <br>
+                        <p>Sign in to access exclusive predictions </p>
+                        <br>
+                        <button class="btn" id="sign-in-btn">Sign in</button>
+                    </div>
+                    <img src="{{ url_for('static', filename='image/acc7.jpg') }}" class="image">
+             </div> 
+             <div class="panel right-panel">
+                <div class="content">
+                    <h3> Sign up </h3>
+                    <br>
+                    <p> Create an account to access exclusive features and content! </p>
+                    <br>
+                    <button class="btn" id="sign-up-btn">Sign up</button>
+                </div>
+                 <img src="{{ url_for('static', filename='image/acc8.jpg') }}" class="image">
+         </div> 
+        </div>
+    </div>
+    <script type="module" src="{{ url_for('static', filename='jsFiles/loginpage.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+</body>
+
+</html>
