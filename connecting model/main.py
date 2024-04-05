@@ -448,7 +448,7 @@ with open('road_surface_model.pkl', 'rb') as file:
     loaded_model = pickle.load(file)
 
 # Load the model from the pickle file
-with open('accident_severity_model.pkl', 'rb') as f:
+with open('random_forest_model.pkl', 'rb') as f:
     severity_model = pickle.load(f)
 
 # Mapping for dropdown district options to numeric values
